@@ -1,0 +1,9 @@
+|ex4_19
+a[0] => Decoder0.IN3
+a[1] => Decoder0.IN2
+a[2] => Decoder0.IN1
+a[3] => Decoder0.IN0
+p <= WideOr0.DB_MAX_OUTPUT_PORT_TYPE
+d <= WideOr1.DB_MAX_OUTPUT_PORT_TYPE
+
+

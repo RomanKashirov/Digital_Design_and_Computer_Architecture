@@ -1,0 +1,85 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dD:/Git/Digital_Design_and_Computer_Architecture/HDL/ex4_9/simulation/modelsim
+vmux8
+Z1 DXx6 sv_std 3 std 0 22 AD7iAPLo6nTIKk<N0eo=D3
+Z2 !s110 1586015233
+!i10b 1
+!s100 71mT8n@E@R2S0=La46FXf1
+Ia:aR3I2f9HHC1jYRgCe`H1
+Z3 VDg1SIo80bB@j0V0VzS_@n1
+!s105 mux8_sv_unit
+S1
+R0
+w1585926511
+8D:/Git/Digital_Design_and_Computer_Architecture/HDL/ex4_9/mux8.sv
+FD:/Git/Digital_Design_and_Computer_Architecture/HDL/ex4_9/mux8.sv
+L0 1
+Z4 OV;L;10.5b;63
+r1
+!s85 0
+31
+!s108 1586015232.000000
+!s107 D:/Git/Digital_Design_and_Computer_Architecture/HDL/ex4_9/mux8.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+D:/Git/Digital_Design_and_Computer_Architecture/HDL/ex4_9|D:/Git/Digital_Design_and_Computer_Architecture/HDL/ex4_9/mux8.sv|
+!i113 1
+Z5 o-sv -work work
+Z6 !s92 -sv -work work +incdir+D:/Git/Digital_Design_and_Computer_Architecture/HDL/ex4_9
+Z7 tCvgOpt 0
+vsome_logic
+R1
+R2
+!i10b 1
+!s100 k_3;d_>_FH6Z8P`MbaFZd3
+IPZ6nanYoch[IiSdg?XP;;2
+R3
+!s105 some_logic_sv_unit
+S1
+R0
+w1586015147
+8D:/Git/Digital_Design_and_Computer_Architecture/HDL/ex4_9/some_logic.sv
+FD:/Git/Digital_Design_and_Computer_Architecture/HDL/ex4_9/some_logic.sv
+L0 1
+R4
+r1
+!s85 0
+31
+Z8 !s108 1586015233.000000
+!s107 D:/Git/Digital_Design_and_Computer_Architecture/HDL/ex4_9/some_logic.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+D:/Git/Digital_Design_and_Computer_Architecture/HDL/ex4_9|D:/Git/Digital_Design_and_Computer_Architecture/HDL/ex4_9/some_logic.sv|
+!i113 1
+R5
+R6
+R7
+vsome_logic_tb
+R1
+R2
+!i10b 1
+!s100 SSf6ahhMieTe56>3^`6fD1
+Id[PI8FCMYL>;6[SEK=4Wd2
+R3
+!s105 some_logic_tb_sv_unit
+S1
+R0
+w1585929312
+8D:/Git/Digital_Design_and_Computer_Architecture/HDL/ex4_9/some_logic_tb.sv
+FD:/Git/Digital_Design_and_Computer_Architecture/HDL/ex4_9/some_logic_tb.sv
+L0 1
+R4
+r1
+!s85 0
+31
+R8
+!s107 D:/Git/Digital_Design_and_Computer_Architecture/HDL/ex4_9/some_logic_tb.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+D:/Git/Digital_Design_and_Computer_Architecture/HDL/ex4_9|D:/Git/Digital_Design_and_Computer_Architecture/HDL/ex4_9/some_logic_tb.sv|
+!i113 1
+R5
+R6
+R7

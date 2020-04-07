@@ -1,5 +1,5 @@
 Analysis & Synthesis report for decoder
-Thu Apr 02 22:59:13 2020
+Fri Apr 03 16:47:36 2020
 Quartus Prime Version 19.1.0 Build 670 09/22/2019 SJ Lite Edition
 
 
@@ -43,7 +43,7 @@ https://fpgasoftware.intel.com/eula.
 +-------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                  ;
 +---------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status     ; Successful - Thu Apr 02 22:59:13 2020       ;
+; Analysis & Synthesis Status     ; Successful - Fri Apr 03 16:47:36 2020       ;
 ; Quartus Prime Version           ; 19.1.0 Build 670 09/22/2019 SJ Lite Edition ;
 ; Revision Name                   ; decoder                                     ;
 ; Top-level Entity Name           ; sevenseg                                    ;
@@ -258,12 +258,14 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 19.1.0 Build 670 09/22/2019 SJ Lite Edition
-    Info: Processing started: Thu Apr 02 22:58:37 2020
+    Info: Processing started: Fri Apr 03 16:46:58 2020
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off decoder -c decoder
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 2 of the 2 processors detected
 Info (12021): Found 1 design units, including 1 entities, in source file sevenseg.sv
     Info (12023): Found entity 1: sevenseg File: D:/Git/Digital_Design_and_Computer_Architecture/HDL/ex4_7/sevenseg.sv Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file sevenseg_tb.sv
+    Info (12023): Found entity 1: sevenseg_tb File: D:/Git/Digital_Design_and_Computer_Architecture/HDL/ex4_7/sevenseg_tb.sv Line: 1
 Info (12127): Elaborating entity "sevenseg" for the top level hierarchy
 Info (286030): Timing-Driven Synthesis is running
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
@@ -273,9 +275,9 @@ Info (21057): Implemented 18 device resources after synthesis - the final resour
     Info (21059): Implemented 7 output pins
     Info (21061): Implemented 7 logic cells
 Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 1 warning
-    Info: Peak virtual memory: 673 megabytes
-    Info: Processing ended: Thu Apr 02 22:59:13 2020
-    Info: Elapsed time: 00:00:36
-    Info: Total CPU time (on all processors): 00:00:58
+    Info: Peak virtual memory: 672 megabytes
+    Info: Processing ended: Fri Apr 03 16:47:36 2020
+    Info: Elapsed time: 00:00:38
+    Info: Total CPU time (on all processors): 00:01:01
 
 

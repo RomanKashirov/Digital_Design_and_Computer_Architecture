@@ -1,0 +1,22 @@
+module jk_trigger_tb();
+  logic        clk, reset;
+  logic        j, k;
+  
+  jk_trigger dut(a, b, c, y);
+  // генерировать такты
+  always
+   begin
+     clk = 1; #5; clk = 0; #5;
+   end
+  
+  always
+   begin
+     clk = 1; #5; clk = 0; #5;
+   end
+  
+  initial
+    begin
+      
+      reset = 1; #27; reset = 0;
+    end
+  

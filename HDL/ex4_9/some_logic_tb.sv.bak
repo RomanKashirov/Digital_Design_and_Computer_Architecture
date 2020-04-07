@@ -1,0 +1,39 @@
+module some_logic_tb();
+	timeunit 1ns;
+	timeprecision 1ns;
+	
+  logic [2:0] in; logic out;
+  
+  // задание (определение) тестируемого 
+  // устройства
+  sevenseg dut(in, out);
+  // активировать входы пошагово, 
+  // с интервалом проверка результатов
+  initial begin
+    in = 3'b000; #10;
+	 assert (y === 1) else $error("000 failed.");
+	 
+	 in = 3'b001; #10;
+	 assert (y === 0) else $error("001 failed.");
+	 
+	 in = 3'b010; #10;
+	 assert (y === 0) else $error("010 failed.");
+	 
+	 in = 3'b011; #10;
+	 assert (y === 1) else $error("011 failed.");
+	 
+	 in = 3'b100; #10;
+	 assert (y === 1) else $error("100 failed.");
+	 
+	 in = 3'b101; #10;
+	 assert (y === 1) else $error("101 failed.");
+	 
+	 in = 3'b110; #10;
+	 assert (y === 0) else $error("110 failed.");
+	 
+	 in = 3'b111; #10;
+	 assert (y === 0) else $error("111 failed.");
+	 
+    
+  end
+endmodule

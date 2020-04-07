@@ -1,0 +1,13 @@
+|Light_Controller
+clk => state~1.DATAIN
+reset => state~3.DATAIN
+Ta => Selector0.IN3
+Ta => nextstate.S1.DATAB
+Tb => Selector1.IN3
+Tb => nextstate.S3.DATAB
+La[0] <= La[0].DB_MAX_OUTPUT_PORT_TYPE
+La[1] <= La.DB_MAX_OUTPUT_PORT_TYPE
+Lb[0] <= Lb[0].DB_MAX_OUTPUT_PORT_TYPE
+Lb[1] <= La.DB_MAX_OUTPUT_PORT_TYPE
+
+

@@ -1,0 +1,8 @@
+|jk_trigger_sm
+clk => state.CLK
+reset => state.ACLR
+j => nextstate.DATAA
+k => nextstate.DATAB
+q << state.DB_MAX_OUTPUT_PORT_TYPE
+
+

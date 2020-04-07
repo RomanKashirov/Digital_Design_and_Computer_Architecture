@@ -1,0 +1,13 @@
+|trafficFSM
+clk => state~1.DATAIN
+reset => state~3.DATAIN
+ta => Selector0.IN3
+ta => nextstate.S1.DATAB
+tb => Selector1.IN3
+tb => nextstate.S3.DATAB
+la[0] <= la[0].DB_MAX_OUTPUT_PORT_TYPE
+la[1] <= la.DB_MAX_OUTPUT_PORT_TYPE
+lb[0] <= lb[0].DB_MAX_OUTPUT_PORT_TYPE
+lb[1] <= la.DB_MAX_OUTPUT_PORT_TYPE
+
+

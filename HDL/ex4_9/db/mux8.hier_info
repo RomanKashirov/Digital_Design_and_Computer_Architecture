@@ -1,0 +1,22 @@
+|some_logic
+a => a.IN1
+b => b.IN1
+c => c.IN1
+y <= mux8:muxic_8.port9
+
+
+|some_logic|mux8:muxic_8
+s[0] => Mux0.IN2
+s[1] => Mux0.IN1
+s[2] => Mux0.IN0
+d0 => Mux0.IN3
+d1 => Mux0.IN4
+d2 => Mux0.IN5
+d3 => Mux0.IN6
+d4 => Mux0.IN7
+d5 => Mux0.IN8
+d6 => Mux0.IN9
+d7 => Mux0.IN10
+y <= Mux0.DB_MAX_OUTPUT_PORT_TYPE
+
+

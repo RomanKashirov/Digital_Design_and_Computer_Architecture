@@ -1,0 +1,30 @@
+|logic_from_2_35
+a[0] => p.IN1
+a[0] => p.IN1
+a[0] => p.IN1
+a[0] => d.IN1
+a[0] => d.IN1
+a[0] => d.IN1
+a[0] => d.IN1
+a[0] => d.IN1
+a[1] => p.IN1
+a[1] => p.IN0
+a[1] => d.IN1
+a[1] => d.IN1
+a[1] => p.IN0
+a[1] => d.IN1
+a[1] => d.IN1
+a[2] => p.IN0
+a[2] => p.IN1
+a[2] => d.IN0
+a[2] => p.IN1
+a[2] => p.IN0
+a[2] => d.IN0
+a[3] => d.IN1
+a[3] => d.IN1
+a[3] => p.IN1
+a[3] => p.IN1
+p <= p.DB_MAX_OUTPUT_PORT_TYPE
+d <= d.DB_MAX_OUTPUT_PORT_TYPE
+
+

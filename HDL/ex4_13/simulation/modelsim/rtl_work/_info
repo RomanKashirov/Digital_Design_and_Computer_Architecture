@@ -1,0 +1,60 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dD:/Git/Digital_Design_and_Computer_Architecture/HDL/ex4_13/simulation/modelsim
+vdecoder2_4
+Z1 DXx6 sv_std 3 std 0 22 AD7iAPLo6nTIKk<N0eo=D3
+Z2 !s110 1586101733
+!i10b 1
+!s100 P_[=A[CjIEn:HCfhU_zGK0
+IAbhXN>@z[[^0hi>o:_2j<1
+Z3 VDg1SIo80bB@j0V0VzS_@n1
+!s105 decoder2_4_sv_unit
+S1
+R0
+w1586101040
+8D:/Git/Digital_Design_and_Computer_Architecture/HDL/ex4_13/decoder2_4.sv
+FD:/Git/Digital_Design_and_Computer_Architecture/HDL/ex4_13/decoder2_4.sv
+L0 1
+Z4 OV;L;10.5b;63
+r1
+!s85 0
+31
+Z5 !s108 1586101733.000000
+!s107 D:/Git/Digital_Design_and_Computer_Architecture/HDL/ex4_13/decoder2_4.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+D:/Git/Digital_Design_and_Computer_Architecture/HDL/ex4_13|D:/Git/Digital_Design_and_Computer_Architecture/HDL/ex4_13/decoder2_4.sv|
+!i113 1
+Z6 o-sv -work work
+Z7 !s92 -sv -work work +incdir+D:/Git/Digital_Design_and_Computer_Architecture/HDL/ex4_13
+Z8 tCvgOpt 0
+vdecoder2_4_tb
+R1
+R2
+!i10b 1
+!s100 RKG`B@;Z]BPI5Om82EnlS0
+I78kCQYPE`JW^H_FjB^hJS3
+R3
+!s105 decoder2_4_tb_sv_unit
+S1
+R0
+w1586101626
+8D:/Git/Digital_Design_and_Computer_Architecture/HDL/ex4_13/decoder2_4_tb.sv
+FD:/Git/Digital_Design_and_Computer_Architecture/HDL/ex4_13/decoder2_4_tb.sv
+L0 1
+R4
+r1
+!s85 0
+31
+R5
+!s107 D:/Git/Digital_Design_and_Computer_Architecture/HDL/ex4_13/decoder2_4_tb.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+D:/Git/Digital_Design_and_Computer_Architecture/HDL/ex4_13|D:/Git/Digital_Design_and_Computer_Architecture/HDL/ex4_13/decoder2_4_tb.sv|
+!i113 1
+R6
+R7
+R8

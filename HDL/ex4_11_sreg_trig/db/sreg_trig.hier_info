@@ -1,0 +1,41 @@
+|sreg_trig
+clk => clk.IN4
+reset => reset.IN4
+q0 << q0.DB_MAX_OUTPUT_PORT_TYPE
+q1 << q1.DB_MAX_OUTPUT_PORT_TYPE
+q2 << q2.DB_MAX_OUTPUT_PORT_TYPE
+q3 << q3.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|sreg_trig|d_trigger:t0
+clk => q~reg0.CLK
+reset => q~reg0.ACLR
+set => q.OUTPUTSELECT
+d => q.DATAA
+q <= q~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|sreg_trig|d_trigger:t1
+clk => q~reg0.CLK
+reset => q~reg0.ACLR
+set => q.OUTPUTSELECT
+d => q.DATAA
+q <= q~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|sreg_trig|d_trigger:t2
+clk => q~reg0.CLK
+reset => q~reg0.ACLR
+set => q.OUTPUTSELECT
+d => q.DATAA
+q <= q~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|sreg_trig|d_trigger:t3
+clk => q~reg0.CLK
+reset => q~reg0.ACLR
+set => q.OUTPUTSELECT
+d => q.DATAA
+q <= q~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+

@@ -1,0 +1,9 @@
+|shift_register
+clk => state~1.DATAIN
+reset => state~3.DATAIN
+q0 <= q0.DB_MAX_OUTPUT_PORT_TYPE
+q1 <= q1.DB_MAX_OUTPUT_PORT_TYPE
+q2 <= q2.DB_MAX_OUTPUT_PORT_TYPE
+q3 <= q3.DB_MAX_OUTPUT_PORT_TYPE
+
+
