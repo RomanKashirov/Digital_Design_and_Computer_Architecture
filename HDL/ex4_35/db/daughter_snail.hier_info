@@ -1,0 +1,13 @@
+|daughter_snail
+clk => state~1.DATAIN
+reset => state~3.DATAIN
+in => nextstate.S2.DATAB
+in => Selector1.IN2
+in => Selector3.IN1
+in => Selector4.IN3
+in => Selector4.IN1
+in => Selector0.IN2
+in => Selector2.IN1
+q <= Selector4.DB_MAX_OUTPUT_PORT_TYPE
+
+

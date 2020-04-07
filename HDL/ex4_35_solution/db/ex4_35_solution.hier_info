@@ -1,0 +1,13 @@
+|daughterfsm
+clk => state~1.DATAIN
+reset => state~3.DATAIN
+a => smile.IN0
+a => nextstate.S2.DATAB
+a => Selector1.IN2
+a => Selector3.IN1
+a => smile.IN0
+a => Selector0.IN2
+a => Selector2.IN1
+smile <= smile.DB_MAX_OUTPUT_PORT_TYPE
+
+

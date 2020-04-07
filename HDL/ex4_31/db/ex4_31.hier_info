@@ -1,0 +1,15 @@
+|ex4_31
+clk => regd.CLK
+clk => regc.CLK
+clk => regb.CLK
+clk => rega.CLK
+clk => Y~reg0.CLK
+clk => X~reg0.CLK
+A => rega.DATAIN
+B => regb.DATAIN
+C => regc.DATAIN
+D => regd.DATAIN
+X <= X~reg0.DB_MAX_OUTPUT_PORT_TYPE
+Y <= Y~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+

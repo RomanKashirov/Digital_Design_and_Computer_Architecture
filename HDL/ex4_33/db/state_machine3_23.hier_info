@@ -1,0 +1,12 @@
+|state_machine3_23
+clk => state~1.DATAIN
+reset => state~3.DATAIN
+a => always2.IN0
+a => nextstate.S1.DATAB
+a => Selector0.IN0
+b => always2.IN1
+b => Selector1.IN2
+b => Selector0.IN1
+y <= y.DB_MAX_OUTPUT_PORT_TYPE
+
+

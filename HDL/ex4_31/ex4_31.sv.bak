@@ -1,0 +1,13 @@
+module ex4_31(input  logic clk, 
+               input  logic A, B, C, D,
+               output logic X, Y);
+  logic n1, n2;
+  always_ff @(posedge clk)
+    begin
+      X <= n1; // блокирующее 
+      Y <= n2; // блокирующее 
+    end
+	 
+	 assign n1 = A&B | C;
+	 assign n2 = ~(n1 | n2);
+endmodule
