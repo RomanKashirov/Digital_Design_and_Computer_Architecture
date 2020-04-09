@@ -1,0 +1,34 @@
+
+module grey_counter(input logic clk, reset,
+            
+            output logic [2:0] q);
+				
+  typedef enum logic [2:0] {S0 = 000, S1 = 001, S2 = 011,
+  S3 = 010, S4 = 110, S5 = 111, S6 = 101} statetype;
+  
+  statetype state, nextstate;
+  
+  always_ff @(posedge clk, posedge reset)
+   if (reset) state <= S0;
+   else       state <= nextstate;
+  
+  // input logic
+  always_comb
+    case (state)
+	 
+      S0: nextstate = S1;
+      S1: nextstate = S2;
+      S2: nextstate = S3;
+      S3: nextstate = S4;
+		S4: nextstate = S5;
+		S5: nextstate = S6;
+		S6: nextstate = S0;
+      
+      default: nextstate = S0;
+    endcase
+	
+// output logic	
+ 
+	assign q = state;
+ 
+endmodule

@@ -1,0 +1,19 @@
+module grey_counter_tb();
+  logic clk, reset;
+  
+  
+  grey_counter dut(clk, reset);
+  // генерировать такты
+  always
+   begin
+     clk = 1; #5; clk = 0; #5;
+   end
+  
+  
+  
+  initial
+    begin
+      
+      reset = 1; #27; reset = 0;
+    end
+ endmodule

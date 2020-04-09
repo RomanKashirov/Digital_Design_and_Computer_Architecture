@@ -1,0 +1,60 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dD:/Git/Digital_Design_and_Computer_Architecture/HDL/ex4_39/simulation/modelsim
+vstate_machine3_29
+Z1 DXx6 sv_std 3 std 0 22 AD7iAPLo6nTIKk<N0eo=D3
+Z2 !s110 1586339275
+!i10b 1
+!s100 nBElTm2XiMn1kaSj6N:L[1
+ICN]zU=DmUk>F6TaY3m15L0
+Z3 VDg1SIo80bB@j0V0VzS_@n1
+!s105 state_machine3_29_sv_unit
+S1
+R0
+w1586337378
+8D:/Git/Digital_Design_and_Computer_Architecture/HDL/ex4_39/state_machine3_29.sv
+FD:/Git/Digital_Design_and_Computer_Architecture/HDL/ex4_39/state_machine3_29.sv
+L0 2
+Z4 OV;L;10.5b;63
+r1
+!s85 0
+31
+Z5 !s108 1586339275.000000
+!s107 D:/Git/Digital_Design_and_Computer_Architecture/HDL/ex4_39/state_machine3_29.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+D:/Git/Digital_Design_and_Computer_Architecture/HDL/ex4_39|D:/Git/Digital_Design_and_Computer_Architecture/HDL/ex4_39/state_machine3_29.sv|
+!i113 1
+Z6 o-sv -work work
+Z7 !s92 -sv -work work +incdir+D:/Git/Digital_Design_and_Computer_Architecture/HDL/ex4_39
+Z8 tCvgOpt 0
+vstate_machine3_29_tb
+R1
+R2
+!i10b 1
+!s100 c6dALIg@_D;gkj5@DFLgI0
+I7fc`BR1Y@PRoCoDao4CW[0
+R3
+!s105 state_machine3_29_tb_sv_unit
+S1
+R0
+w1586339151
+8D:/Git/Digital_Design_and_Computer_Architecture/HDL/ex4_39/state_machine3_29_tb.sv
+FD:/Git/Digital_Design_and_Computer_Architecture/HDL/ex4_39/state_machine3_29_tb.sv
+L0 3
+R4
+r1
+!s85 0
+31
+R5
+!s107 D:/Git/Digital_Design_and_Computer_Architecture/HDL/ex4_39/state_machine3_29_tb.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+D:/Git/Digital_Design_and_Computer_Architecture/HDL/ex4_39|D:/Git/Digital_Design_and_Computer_Architecture/HDL/ex4_39/state_machine3_29_tb.sv|
+!i113 1
+R6
+R7
+R8

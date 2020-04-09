@@ -1,0 +1,10 @@
+|ex4_43
+clk => state[0].CLK
+clk => state[1].CLK
+reset => state[0].ACLR
+reset => state[1].ACLR
+a => nextstate[0].DATAB
+a => Selector0.IN3
+q <= state[1].DB_MAX_OUTPUT_PORT_TYPE
+
+

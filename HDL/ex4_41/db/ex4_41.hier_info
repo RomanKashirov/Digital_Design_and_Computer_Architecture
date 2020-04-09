@@ -1,0 +1,8 @@
+|ex4_41
+clk => state.CLK
+start => state.PRESET
+a => q.IN1
+a => nextstate.DATAB
+q <= q.DB_MAX_OUTPUT_PORT_TYPE
+
+

@@ -1,0 +1,10 @@
+|ex4_49
+clk => z~reg0.CLK
+clk => y~reg0.CLK
+a => x.IN0
+b => x.IN1
+c => y.IN1
+y <= y~reg0.DB_MAX_OUTPUT_PORT_TYPE
+z <= z~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+

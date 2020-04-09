@@ -1,0 +1,33 @@
+
+module ex4_41(input logic clk, start,
+            input logic a,
+            output logic q);
+				
+				
+				
+  typedef enum logic  {S0 = 1'b1, 
+							  S1 = 1'b0 
+							  } statetype;
+  
+  statetype state, nextstate;
+  
+  always_ff @(posedge clk, posedge start)
+   if (start) state <= S0;
+   else       state <= nextstate;
+  
+  // input logic
+  always_comb
+    case (state)
+	 
+      S0: if(a == 0)	nextstate = S0;
+			else nextstate = S1;
+      S1: nextstate = S1;
+            
+      default: nextstate = S0;
+    endcase
+	
+// output logic	
+ 
+	assign q = ~(state ^ a);
+ 
+endmodule

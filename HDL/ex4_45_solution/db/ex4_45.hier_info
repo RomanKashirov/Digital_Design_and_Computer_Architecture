@@ -1,0 +1,39 @@
+|ex4_45
+clk => s[0]~reg0.CLK
+clk => s[1]~reg0.CLK
+clk => creg.CLK
+clk => breg[0].CLK
+clk => breg[1].CLK
+clk => areg[0].CLK
+clk => areg[1].CLK
+c => creg.DATAIN
+a[0] => areg[0].DATAIN
+a[1] => areg[1].DATAIN
+b[0] => breg[0].DATAIN
+b[1] => breg[1].DATAIN
+s[0] <= s[0]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+s[1] <= s[1]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|ex4_45|fulladder:fulladd1
+a => p.IN0
+a => g.IN0
+b => p.IN1
+b => g.IN1
+cin => s.IN1
+cin => cout.IN1
+s <= s.DB_MAX_OUTPUT_PORT_TYPE
+cout <= cout.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|ex4_45|fulladder:fulladd2
+a => p.IN0
+a => g.IN0
+b => p.IN1
+b => g.IN1
+cin => s.IN1
+cin => cout.IN1
+s <= s.DB_MAX_OUTPUT_PORT_TYPE
+cout <= cout.DB_MAX_OUTPUT_PORT_TYPE
+
+

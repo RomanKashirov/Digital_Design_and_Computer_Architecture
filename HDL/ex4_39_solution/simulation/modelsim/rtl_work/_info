@@ -1,0 +1,60 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dD:/Git/Digital_Design_and_Computer_Architecture/HDL/ex4_39_solution/simulation/modelsim
+vex4_39
+Z1 DXx6 sv_std 3 std 0 22 AD7iAPLo6nTIKk<N0eo=D3
+!s110 1586340053
+!i10b 1
+!s100 VJ;a:WTZNec0<VXESNf=c0
+IDEY29dS1e1:785HnLIzk?2
+Z2 VDg1SIo80bB@j0V0VzS_@n1
+!s105 ex4_39_sv_unit
+S1
+R0
+w1586339831
+8D:/Git/Digital_Design_and_Computer_Architecture/HDL/ex4_39_solution/ex4_39.sv
+FD:/Git/Digital_Design_and_Computer_Architecture/HDL/ex4_39_solution/ex4_39.sv
+L0 1
+Z3 OV;L;10.5b;63
+r1
+!s85 0
+31
+Z4 !s108 1586340053.000000
+!s107 D:/Git/Digital_Design_and_Computer_Architecture/HDL/ex4_39_solution/ex4_39.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+D:/Git/Digital_Design_and_Computer_Architecture/HDL/ex4_39_solution|D:/Git/Digital_Design_and_Computer_Architecture/HDL/ex4_39_solution/ex4_39.sv|
+!i113 1
+Z5 o-sv -work work
+Z6 !s92 -sv -work work +incdir+D:/Git/Digital_Design_and_Computer_Architecture/HDL/ex4_39_solution
+Z7 tCvgOpt 0
+vex4_39_tb
+R1
+!s110 1586340054
+!i10b 1
+!s100 3n26:R3e[JDSPSOdbnB920
+InBKCJB_<hk1GAcf^hM8@<2
+R2
+!s105 ex4_39_tb_sv_unit
+S1
+R0
+w1586339749
+8D:/Git/Digital_Design_and_Computer_Architecture/HDL/ex4_39_solution/ex4_39_tb.sv
+FD:/Git/Digital_Design_and_Computer_Architecture/HDL/ex4_39_solution/ex4_39_tb.sv
+L0 3
+R3
+r1
+!s85 0
+31
+R4
+!s107 D:/Git/Digital_Design_and_Computer_Architecture/HDL/ex4_39_solution/ex4_39_tb.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+D:/Git/Digital_Design_and_Computer_Architecture/HDL/ex4_39_solution|D:/Git/Digital_Design_and_Computer_Architecture/HDL/ex4_39_solution/ex4_39_tb.sv|
+!i113 1
+R5
+R6
+R7

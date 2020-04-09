@@ -1,0 +1,11 @@
+|state_machine3_29
+clk => state.CLK
+reset => state.ACLR
+a => Decoder0.IN0
+a => q.IN0
+a => q.IN1
+b => q.IN1
+b => q.IN1
+q << q.DB_MAX_OUTPUT_PORT_TYPE
+
+

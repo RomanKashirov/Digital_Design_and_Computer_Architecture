@@ -1,0 +1,8 @@
+|grey_counter
+clk => state~1.DATAIN
+reset => state~3.DATAIN
+q[0] <= WideOr2.DB_MAX_OUTPUT_PORT_TYPE
+q[1] <= WideOr1.DB_MAX_OUTPUT_PORT_TYPE
+q[2] <= WideOr0.DB_MAX_OUTPUT_PORT_TYPE
+
+
