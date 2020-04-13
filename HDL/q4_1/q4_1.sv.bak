@@ -1,0 +1,9 @@
+module q4_1(input  logic [31:0] data, 
+				input logic sel,
+                  output logic [31:0] result);
+         
+         always_comb 
+			if(sel) result = data;
+			else result = 32'd0;
+         
+      endmodule

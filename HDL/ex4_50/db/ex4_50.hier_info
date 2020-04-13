@@ -1,0 +1,7 @@
+|ex4_50
+a => tmp.IN0
+b => tmp.IN1
+c => y.IN1
+y <= y.DB_MAX_OUTPUT_PORT_TYPE
+
+

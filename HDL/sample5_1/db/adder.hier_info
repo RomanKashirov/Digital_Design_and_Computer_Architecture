@@ -1,0 +1,29 @@
+|adder
+a[0] => _.DATAD
+a[1] => _.DATAD
+a[2] => _.DATAD
+a[3] => _.DATAD
+a[4] => _.DATAD
+a[5] => _.DATAD
+a[6] => _.DATAD
+a[7] => _.DATAD
+b[0] => _.DATAC
+b[1] => _.DATAC
+b[2] => _.DATAC
+b[3] => _.DATAC
+b[4] => _.DATAC
+b[5] => _.DATAC
+b[6] => _.DATAC
+b[7] => _.DATAC
+cin => _.DATAB
+s[0] <= _.SUM_OUT
+s[1] <= _.SUM_OUT
+s[2] <= _.SUM_OUT
+s[3] <= _.SUM_OUT
+s[4] <= _.SUM_OUT
+s[5] <= _.SUM_OUT
+s[6] <= _.SUM_OUT
+s[7] <= _.SUM_OUT
+cout <= _.SUM_OUT
+
+

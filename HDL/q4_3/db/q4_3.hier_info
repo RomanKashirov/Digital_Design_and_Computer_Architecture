@@ -1,0 +1,20 @@
+|q4_3
+data[0] => ~NO_FANOUT~
+data[1] => ~NO_FANOUT~
+data[2] => ~NO_FANOUT~
+data[3] => ~NO_FANOUT~
+data[4] => ~NO_FANOUT~
+data[5] => WideOr0.IN0
+data[6] => ~NO_FANOUT~
+data[7] => ~NO_FANOUT~
+data[8] => ~NO_FANOUT~
+data[9] => ~NO_FANOUT~
+data[10] => ~NO_FANOUT~
+data[11] => WideOr0.IN1
+data[12] => ~NO_FANOUT~
+data[13] => ~NO_FANOUT~
+data[14] => WideOr0.IN2
+data[15] => WideOr0.IN3
+result <= WideOr0.DB_MAX_OUTPUT_PORT_TYPE
+
+
