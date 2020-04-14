@@ -1,0 +1,8 @@
+|rom
+adr[0] => Decoder0.IN1
+adr[1] => Decoder0.IN0
+dout[0] <= Decoder0.DB_MAX_OUTPUT_PORT_TYPE
+dout[1] <= Decoder0.DB_MAX_OUTPUT_PORT_TYPE
+dout[2] <= dout.DB_MAX_OUTPUT_PORT_TYPE
+
+
