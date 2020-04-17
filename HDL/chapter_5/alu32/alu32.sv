@@ -1,5 +1,5 @@
 module alu32 (input logic [31:0] a, b,
-					input logic f[2:0],
+					input logic [2:0] f,
 					output logic overflow,
 					output logic zero,
 					output logic [31:0] y);
