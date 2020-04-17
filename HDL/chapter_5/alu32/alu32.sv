@@ -1,3 +1,4 @@
+// 32-битное АЛУ
 module alu32 (input logic [31:0] a, b,
 					input logic [2:0] f,
 					output logic overflow,
