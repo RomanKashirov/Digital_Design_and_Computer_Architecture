@@ -4,7 +4,7 @@ module fp_adder_tb();
   logic [31:0] b;
   logic [31:0] y;
 	
-  fp_adder dut(a, b, y);
+  fpadd dut(a, b, y);
   // активировать входы пошагово, 
   // с интервалом
   initial begin
