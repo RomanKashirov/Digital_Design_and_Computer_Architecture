@@ -6,7 +6,7 @@
 strcpy:
 addi $sp, $sp, -4 	# make space on stack to store one register
 sw $s0, 0($sp) 		# save $s0 on stack
-add $s0, $0, $0     # i = 0
+add $s0, $0, $0     	# i = 0
 
 loop:
 add $t1, $a1, $s0 	# $t1 = address of src[i]
