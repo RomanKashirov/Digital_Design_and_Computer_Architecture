@@ -8,7 +8,7 @@
 main:
 addi $sp, $sp, -4  # выделить место в стеке
 sw   $ra, 0($sp)   # сохранить $ra
-addi $a0, $0, 12
+addi $a0, $0, 9
 jal fib
 lw   $ra, 0($sp)   # восстановить $ra
  addi $sp, $sp, 4   # восстановить $sp
