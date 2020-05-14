@@ -39,6 +39,4 @@ j loop
 
 done:
 add $v0, $0, $t0 		# return result
-add $v0, $0, $t0 		# return result
-add $v0, $0, $t0 		# return result
 jr   $ra           	#  return to caller
