@@ -1,10 +1,10 @@
-# Exercise 6.27
+# Exercise 6.27 16.05.2020
 
 
 main:
 	addi $sp, $sp, -4 	 # make room on stack
 	sw   $ra, 0($sp)  	 # store $ra
-	addi $a0, $0, 2
+	addi $a0, $0, 6
 	
 	jal setArray
 	lw   $ra, 0($sp)  	 # restore $ra
@@ -16,8 +16,10 @@ setArray:
 	sw $s0, 4($sp) 		# store $s0
 	sw $ra, 0($sp) 		# store $ra
 	# $t0 = base address of array
-	lui $t0, 0x1000 		# $t0 = 0x10000000
-	ori $t0, $t0, 0x7000 	# $t0 = 0x10007000
+	#lui $t0, 0x1000 		# $t0 = 0x10000000
+	#ori $t0, $t0, 0x7000 	# $t0 = 0x10007000
+	addi $sp, $sp, -40 	# make room for array on stack
+	add $t0, $0, $sp
 	add $s0, $0, $0			# i = 0
 loop:
 	addi $t3, $0, 10
@@ -30,6 +32,8 @@ loop:
 	addi $s0, $s0, 1
 	j loop
 done:
+	nop
+	addi $sp, $sp, 40 # delete array
 	lw $ra, 0($sp) # restore $ra
 	lw $s0, 4($sp) # restore $s0
 	addi $sp, $sp, 8 # restore $sp
