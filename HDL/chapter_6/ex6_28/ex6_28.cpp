@@ -1,12 +1,13 @@
 #include <iostream>
 #include <string>
 
-int func(int n, int k) {
-int b;
-b = k + 2;
-if (n == 0) b = 10;
-else b = b + (n * n) + func(n - 1, k + 1);
-return b * k;
+int func(int n, int k) 
+{
+	int b;
+	b = k + 2;
+	if (n == 0) b = 10;
+	else b = b + (n * n) + func(n - 1, k + 1);
+	return b * k;
 }
 
 
