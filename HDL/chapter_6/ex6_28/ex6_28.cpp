@@ -18,6 +18,6 @@ int main()
 	std::cin >> n;
 	std::cout << "Please enter k ";
 	std::cin >> k;
-	std::cout << "\nResult - " << func(n, k);
+	std::cout << "\nResult: " << func(n, k);
 }
 
