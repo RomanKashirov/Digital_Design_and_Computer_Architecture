@@ -12,9 +12,11 @@ void rev_chars(char* chars, int start, int end);
 int main()
 {
 	char str[] = "Wubba Lubba Dub Dub";
+	char test[] = {0x48, 0x65, 0x6C, 0x6C, 0x6F, 0x20, 0x77, 0x6F, 0x72 , 0x6C, 0x64, 0x00};
 	print_string(str);
 	shitty_func(str);
 	print_string(str);
+	print_string(test);
 }
 
 void print_string(char* string)
@@ -30,7 +32,6 @@ void print_string(char* string)
 
 void shitty_func(char* string)
 {
-	
 	int eofstr = 0;
 	int eofword = 0;
 	int sofword = 0;
@@ -38,22 +39,16 @@ void shitty_func(char* string)
 	{
 		eofstr++;
 	}
-
 	rev_chars(string, 0, eofstr - 1);
-	
-	
 	while(string[eofword] != 0)
 	{
-        
 		while((string[eofword] != ' ') && (string[eofword] != 0))
 		{
 			eofword++;
 		}
-	
 		rev_chars(string, sofword, eofword - 1);
 		eofword++;
 		sofword = eofword;
-	
 	}
 }
 

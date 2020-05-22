@@ -1,4 +1,4 @@
-// Question 6.3 
+// Question 6.3 solution 
 #include <iostream>
 #include <string>
 #include <cstddef>
