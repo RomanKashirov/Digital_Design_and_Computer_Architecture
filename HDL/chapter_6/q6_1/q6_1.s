@@ -1,4 +1,5 @@
-# Exercise 6.1
+# Question 6.1
+
 main:		addi $sp, $sp, -4 	# make room on stack
 			sw   $ra, 0($sp)  	# store $ra
 			
