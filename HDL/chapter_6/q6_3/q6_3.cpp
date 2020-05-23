@@ -6,7 +6,7 @@
 
 void print_string(char* string);
 void shitty_func(char* string);
-void rev_chars(char* chars, int start, int end);
+void reverse(char* chars, int start, int end);
 
 
 int main()
@@ -39,28 +39,29 @@ void shitty_func(char* string)
 	{
 		eofstr++;
 	}
-	rev_chars(string, 0, eofstr - 1);
+	reverse(string, 0, eofstr - 1);
 	while(string[eofword] != 0)
 	{
 		while((string[eofword] != ' ') && (string[eofword] != 0))
 		{
 			eofword++;
 		}
-		rev_chars(string, sofword, eofword - 1);
+		reverse(string, sofword, eofword - 1);
 		eofword++;
 		sofword = eofword;
 	}
 }
 
-void rev_chars(char* chars, int start, int end)
+void reverse(char* array, int j, int i)
 {
-	int half = (end - start) >> 1;
 	char tmp;
-	for (int i = 0; i <= half; i++)
+	while (i > j) 
 	{
-		tmp = chars[start + i];
-		chars[start + i] = chars[end - i];
-		chars[end - i] = tmp;
+		tmp = array[i];
+		array[i] = array[j];
+		array[j] = tmp;
+		i = i-1;
+		j = j+1;
 	}
 }
 
