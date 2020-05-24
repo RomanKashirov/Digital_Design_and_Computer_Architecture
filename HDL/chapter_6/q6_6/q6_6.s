@@ -10,11 +10,11 @@
 main:			addi $sp, $sp, -4 	# make room on stack
 				sw   $ra, 0($sp)  	# store $ra
 				
-				lui $a0, 0xF00        
-				ori $a0, $a0, 0x0000 # a
+				lui $a0, 0x7FFF        
+				ori $a0, $a0, 0xFFFE # a
 				
-				lui $a1, 0xF00        
-				ori $a1, $a1, 0x0000 # b  
+				lui $a1, 0x8000        
+				ori $a1, $a1, 0x0002 # b  
 				
 				jal check_overflow
 				
@@ -30,10 +30,14 @@ check_overflow: lw $t0, hbit            # load 31 bit mask
 				or $t2, $t2, $t3		# (a&0x80000000)|(b&0x80000000)
 				and $t3, $a0, $t1		# (a&0x7FFFFFFF)
 				and $t1, $a1, $t1		# (b&0x7FFFFFFF)
-				add $t1, $t1, $t3		# (a&0x7FFFFFFF)+(b&0x7FFFFFFF)
+				addu $t1, $t1, $t3		# (a&0x7FFFFFFF)+(b&0x7FFFFFFF)
 				and $t1, $t1, $t0		# ((a&0x7FFFFFFF)+(b&0x7FFFFFFF))&0x80000000
 				and $t1, $t1, $t2		# ((a&0x80000000)|(b&0x80000000)) & ( ((a&0x7FFFFFFF)+(b&0x7FFFFFFF))&0x80000000) )
 				or $t1, $t1, $t4		# ((a&0x80000000)&(b&0x80000000)) | (((a&0x80000000)|(b&0x80000000)) & ( ((a&0x7FFFFFFF)+(b&0x7FFFFFFF))&0x80000000) )
+				beq $t1, $0, done
+				addi $t1, $0, 1
+done:			add $v0, $t1, $0
+				jr $ra
 				
 
 
