@@ -23,8 +23,8 @@ unsigned int reverse_bits(unsigned int number)
 	int result = 0;
 	while(i < 16)
 	{
-    	result = result | (((1 << i)&number)<<(31-i*2));
-		result = result | (((1 << (31-i))&number)>>(31-i*2));
+    	result = result | (((1 << i)&number)<<(31-(i << 1)));
+		result = result | (((1 << (31-i))&number)>>(31-(i << 1)));
 		i++;
 	}
 	return result;
