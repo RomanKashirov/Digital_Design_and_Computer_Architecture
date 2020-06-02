@@ -3,8 +3,9 @@ module testbench();
   logic  reset;
   logic [31:0] writedata, dataadr;
   logic        memwrite;
+  logic [31:0] readdata;
   // определить тестируемое устройство
-  top dut (clk, reset, writedata, dataadr, memwrite);
+  top dut (clk, reset, writedata, dataadr, readdata, memwrite);
   // инициализировать тест
   initial
     begin
@@ -22,7 +23,7 @@ module testbench();
        if (dataadr === 84 & writedata === 7) begin
           $display("Simulation succeeded");
           $stop;
-       end else if (dataadr !== 80) begin
+      end else if (dataadr !== 80) begin
           $display("Simulation failed");
           $stop;
          end
