@@ -1,11 +1,11 @@
 module testbench();
   logic  clk;
   logic  reset;
-  logic [31:0] writedata, dataadr, instr;
+  logic [31:0] writedata, dataadr;
   logic        memwrite;
-  logic [31:0] readdata;
+  
   // определить тестируемое устройство
-  top dut (clk, reset, writedata, dataadr, instr, readdata, memwrite);
+  top dut (clk, reset, writedata, dataadr, memwrite);
   // инициализировать тест
   initial
     begin

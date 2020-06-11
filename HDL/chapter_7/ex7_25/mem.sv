@@ -4,9 +4,9 @@
               output logic [31:0] rd);
       logic [31:0] RAM[63:0];
    initial
-      begin
-       $readmemh("memfile.dat", RAM);
-      end
+   //   begin
+       $readmemh("D:/Git/Digital_Design_and_Computer_Architecture/HDL/chapter_7/ex7_25/memfile.dat", RAM);
+  //    end
      assign rd = RAM[a[31:2]]; // пословно выровнено
      always @(posedge clk)
        if (we)

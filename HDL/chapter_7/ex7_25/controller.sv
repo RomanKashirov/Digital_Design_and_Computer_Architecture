@@ -17,7 +17,7 @@ module controller(input logic clk, reset,
 	logic pcwrite;
 	
   maindecfsm md(clk, reset, op, memwrite,lord, irwrite, regdst, memtoreg,
-            regwrite, alusrca, alusrcb, pcen, pcsrc, aluop, 
+            regwrite, alusrca, alusrcb, pcsrc, aluop, 
 				branch, pcwrite);
 				 
   aludec ad(funct, aluop, alucontrol);

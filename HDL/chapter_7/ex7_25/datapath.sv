@@ -18,7 +18,7 @@ module datapath(input  logic        clk, reset,
 	logic [31:0] data;
 	logic [4:0] writereg;
 	logic [31:0] writeregdata;
-	logic [31:0] readdata1, readdata2, a;
+	logic [31:0] readdataa, readdatab, a;
 	logic [31:0] signimm, signimmsh;
 	logic [31:0] srca, srcb;
 	logic [31:0] aluresult, aluout;

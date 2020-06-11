@@ -49,7 +49,7 @@ module flopr #(parameter WIDTH=8)
 endmodule
 
 //FLIP-FLOP with ENABLE
-module flopren #(parameter WIDTH=8)
+module flopen #(parameter WIDTH=8)
 					(input logic clk, reset, en,
 	input logic [WIDTH-1:0] d,
 	output logic [WIDTH-1:0] q);
