@@ -5,7 +5,7 @@ module datapath(input  logic        clk, reset,
 					 input  logic [1:0]  alusrcb,
                 input  logic [2:0]  alucontrol,
 					 input logic 			pcen,
-					 input logic [1:0]	pcscr,
+					 input logic [1:0]	pcsrc,
                 output logic        zero, 
                 output logic [31:0] adr,
                 output logic [31:0] writedata,
@@ -25,11 +25,7 @@ module datapath(input  logic        clk, reset,
 	// логика адреса памяти
 	flopen #(32)   pcreg(clk, reset, pcen, pcnext, pc);
 	mux2 #(32)    adrmux(pc, aluout, lord, adr);
-	
-	
-	
-	
-							 
+								 
   // логика регистрового файла
   flopen #(32)   instrreg(clk, reset, irwrite, readdata, instr);
   flopr #(32)   datareg(clk, reset, readdata, data);
@@ -43,14 +39,16 @@ module datapath(input  logic        clk, reset,
   // логика АЛУ
   flopr #(32)   areg(clk, reset, readdataa, a);
   flopr #(32)   breg(clk, reset, readdatab, writedata);
+  mux2 #(32)  srcamux(pc, a, alusrca, srca);
+  sl2         immsh(signimm, signimmsh);
+  mux4 #(32)  srcbmux(writedata, 32'b100, signimm, signimmsh, alusrcb, srcb);
+  alu         alu(srca, srcb, alucontrol, aluresult, zero);
+  
+  // логика следующего pc
+  sl2         addsh(instr, addrsh);
+  flopr #(32)   alureg(clk, reset, aluresult, aluout);
+  mux4 #(32)  pcmux(aluresult, aluout, {pc[31:28], addrsh[27:0]}, pcsrc, pcnext);
   
   
-  // закончил тут
   
-  
-  
-  
-  
-  mux2 #(32)  srcbmux(writedata, signimm, alusrc, srcb);
-  alu         alu(srca, srcb, alucontrol, aluout, zero);
 endmodule
