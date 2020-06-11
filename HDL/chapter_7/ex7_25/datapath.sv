@@ -1,3 +1,4 @@
+// Multicycle
 module datapath(input  logic        clk, reset,
                 input  logic        lord, irwrite,
                 input  logic        regdst, memtoreg,
@@ -9,10 +10,11 @@ module datapath(input  logic        clk, reset,
                 output logic        zero, 
                 output logic [31:0] adr,
                 output logic [31:0] writedata,
-                input  logic [31:0] readdata);
+                input  logic [31:0] readdata,
+					 output logic [31:0] instr);
+					 
 	logic [31:0] pcnext;
 	logic [31:0] pc;
-	logic [31:0] instr;
 	logic [31:0] data;
 	logic [4:0] writereg;
 	logic [31:0] writeregdata;
