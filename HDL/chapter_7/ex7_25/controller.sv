@@ -9,7 +9,8 @@ module controller(input logic clk, reset,
 						output logic [2:0]  alucontrol,
 						output logic pcen,
 						output logic [1:0]	pcsrc,
-						input logic        zero);
+						input logic        zero,
+						output logic [3:0] state);
 						
 						
 	logic [1:0] aluop;
@@ -18,7 +19,7 @@ module controller(input logic clk, reset,
 	
   maindecfsm md(clk, reset, op, memwrite,lord, irwrite, regdst, memtoreg,
             regwrite, alusrca, alusrcb, pcsrc, aluop, 
-				branch, pcwrite);
+				branch, pcwrite, state);
 				 
   aludec ad(funct, aluop, alucontrol);
   

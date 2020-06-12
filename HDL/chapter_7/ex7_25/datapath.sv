@@ -11,9 +11,11 @@ module datapath(input  logic        clk, reset,
                 output logic [31:0] adr,
                 output logic [31:0] writedata,
                 input  logic [31:0] readdata,
-					 output logic [31:0] instr);
+					 output logic [31:0] instr,
+					 output logic [31:0] aluout,
+					 output logic [31:0] pcnext); // отладка
 					 
-	logic [31:0] pcnext;
+//	logic [31:0] pcnext; // test
 	logic [31:0] pc;
 	logic [31:0] data;
 	logic [4:0] writereg;
@@ -21,7 +23,8 @@ module datapath(input  logic        clk, reset,
 	logic [31:0] readdataa, readdatab, a;
 	logic [31:0] signimm, signimmsh;
 	logic [31:0] srca, srcb;
-	logic [31:0] aluresult, aluout;
+	logic [31:0] aluresult;
+//	logic [31:0] aluout;   // отладка
 	logic [31:0] addrsh;
 	
 	// логика адреса памяти
@@ -49,7 +52,7 @@ module datapath(input  logic        clk, reset,
   // логика следующего pc
   sl2         addsh(instr, addrsh);
   flopr #(32)   alureg(clk, reset, aluresult, aluout);
-  mux4 #(32)  pcmux(aluresult, aluout, {pc[31:28], addrsh[27:0]}, pcsrc, pcnext);
+  mux3 #(32)  pcmux(aluresult, aluout, {pc[31:28], addrsh[27:0]}, pcsrc, pcnext);
   
   
   

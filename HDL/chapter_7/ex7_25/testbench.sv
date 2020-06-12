@@ -3,9 +3,15 @@ module testbench();
   logic  reset;
   logic [31:0] writedata, dataadr;
   logic        memwrite;
+  logic [3:0] state;
+  logic [1:0]  alusrcb;
+  logic [31:0] aluout;
+  logic [31:0] pcnext;
+  logic [31:0] instr;
   
   // определить тестируемое устройство
-  top dut (clk, reset, writedata, dataadr, memwrite);
+  top dut (clk, reset, writedata, dataadr, memwrite, state, alusrcb, aluout, 
+				pcnext, instr);
   // инициализировать тест
   initial
     begin

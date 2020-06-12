@@ -7,7 +7,8 @@ module maindecfsm(input logic clk, reset,
 						output logic [1:0]	pcsrc,
 						output logic [1:0] aluop,
 						output logic branch,
-						output logic pcwrite);
+						output logic pcwrite,
+						output logic [3:0] st);
 						
 	logic [14:0] out;
 	
@@ -17,7 +18,8 @@ module maindecfsm(input logic clk, reset,
 	
 	typedef enum logic [3:0] {S0, S1, S2, S3, S4, S5, S6, S7, S8, S9, S10, S11} statetype;
 	statetype state, nextstate;
-
+	
+	assign st = state;
 
 	// state register
 	always_ff @(posedge clk, posedge reset)
