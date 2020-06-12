@@ -13,16 +13,17 @@ module datapath(input  logic        clk, reset,
                 input  logic [31:0] readdata,
 					 output logic [31:0] instr,
 					 output logic [31:0] aluout,
-					 output logic [31:0] pcnext); // отладка
+					 output logic [31:0] pc,
+					 output logic [31:0] srca, srcb); // отладка
 					 
-//	logic [31:0] pcnext; // test
-	logic [31:0] pc;
+	logic [31:0] pcnext; // test
+//	logic [31:0] pc;
 	logic [31:0] data;
 	logic [4:0] writereg;
 	logic [31:0] writeregdata;
 	logic [31:0] readdataa, readdatab, a;
 	logic [31:0] signimm, signimmsh;
-	logic [31:0] srca, srcb;
+//	logic [31:0] srca, srcb;
 	logic [31:0] aluresult;
 //	logic [31:0] aluout;   // отладка
 	logic [31:0] addrsh;

@@ -7,8 +7,9 @@ module mips(input logic clk, reset,
 				output logic [3:0] state,
 				output logic [1:0]  alusrcb,
 				output logic [31:0] aluout,  // test
-				output logic [31:0] pcnext,
-				output logic [31:0] instr); // test
+				output logic [31:0] pc,
+				output logic [31:0] instr,
+				output logic [31:0] srca, srcb); // test
 				
 
 
@@ -28,7 +29,7 @@ module mips(input logic clk, reset,
 					
 	datapath dp(clk, reset, lord, irwrite, regdst, memtoreg,regwrite, alusrca, 
 					alusrcb, alucontrol, pcen, pcsrc, zero, adr, writedata, readdata, instr, 
-					aluout, pcnext); // test
+					aluout, pc, srca, srcb); // test
 endmodule
 
 
