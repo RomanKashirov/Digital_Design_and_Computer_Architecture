@@ -1,8 +1,8 @@
 # mipstest.asm
 # David_Harris@hmc.edu, Sarah_Harris@hmc.edu 31 March 2012
 #
-# Тест процессора MIPS.
-# add, sub, and, or, slt, addi, lw, sw, beq, j
+# Тест процессора MIPS 
+# add, sub, and, or, slt, addi, lw, sw, beq, j, bne
 # Если успешно, по адресу 84 запишется 7
 #         Assembly               Description                       Address   Machine
 main:     addi  $2, $0,  5       # задать $2 = 5                   0         20020005
@@ -20,6 +20,8 @@ around:   slt   $4, $7, $2       # $4 = 3 < 5 = 1                  28        00e
           sub   $7, $7, $2       # $7 = 12 – 5 = 7                 30        00e23822
           sw    $7, 68 ($3)      # [80] = 7                        34        ac670044
           lw    $2, 80 ($0)      # $2 = [80] = 7                   38        8c020050
-          j     end              # брать                           3c        08000011
-          addi  $2, $0, 1        # не брать                        40        20020001
-end:      sw    $2, 84($0)       # записать в память mem[84] = 7   44        ac020054
+          j     brnoteq          # брать                           3c        08000013
+		  addi  $2, $0, 1        # не брать                        40        20020001
+brnoteq:  bne	$2, $7, end		# не должен перескочить addi	   44
+		  addi 	$2, $0, 2										   48
+end:      sw    $2, 84($0)       # записать в память mem[84] = 9   4c        ac020054
