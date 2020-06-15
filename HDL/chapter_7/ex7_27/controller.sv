@@ -16,13 +16,14 @@ module controller(input logic clk, reset,
 	logic [1:0] aluop;
 	logic branch;
 	logic pcwrite;
+	logic bne;
 	
   maindecfsm md(clk, reset, op, memwrite,lord, irwrite, regdst, memtoreg,
             regwrite, alusrca, alusrcb, pcsrc, aluop, 
-				branch, pcwrite, state);
+				branch, pcwrite, state, bne);
 				 
   aludec ad(funct, aluop, alucontrol);
   
-  assign pcen = (branch & zero) | pcwrite;
+  assign pcen = (bne & ~zero) | (branch & zero) | pcwrite;
   
 endmodule
