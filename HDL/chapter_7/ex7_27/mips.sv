@@ -20,16 +20,17 @@ module mips(input logic clk, reset,
 	logic [2:0]  alucontrol;
 	logic 			pcen;
 	logic [1:0]	pcsrc;
-	logic        zero; 
+	logic        zero;
+	logic lb;
 //	logic [31:0] instr;
 
 	controller c(clk, reset, instr[31:26], instr[5:0], memwrite, lord, irwrite, regdst, 
 					memtoreg, regwrite, alusrca, 
-					alusrcb, alucontrol, pcen, pcsrc, zero, state);
+					alusrcb, alucontrol, pcen, pcsrc, zero, state, lb);
 					
 	datapath dp(clk, reset, lord, irwrite, regdst, memtoreg,regwrite, alusrca, 
 					alusrcb, alucontrol, pcen, pcsrc, zero, adr, writedata, readdata, instr, 
-					aluout, pc, srca, srcb); // test
+					aluout, pc, srca, srcb,lb); // test lb
 endmodule
 
 

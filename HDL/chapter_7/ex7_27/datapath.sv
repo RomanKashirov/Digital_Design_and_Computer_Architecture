@@ -5,7 +5,7 @@ module datapath(input  logic        clk, reset,
                 input  logic        regwrite, alusrca,
 					 input  logic [1:0]  alusrcb,
                 input  logic [2:0]  alucontrol,
-					 input logic 			pcen,
+					 input logic 			pcen, 
 					 input logic [1:0]	pcsrc,
                 output logic        zero, 
                 output logic [31:0] adr,
@@ -14,14 +14,16 @@ module datapath(input  logic        clk, reset,
 					 output logic [31:0] instr,
 					 output logic [31:0] aluout,
 					 output logic [31:0] pc,
-					 output logic [31:0] srca, srcb); // отладка
+					 output logic [31:0] srca, srcb,
+					 input logic lb); // lb
 					 
 	logic [31:0] pcnext; // test
 //	logic [31:0] pc;
 	logic [31:0] data;
 	logic [4:0] writereg;
 	logic [31:0] writeregdata;
-	logic [31:0] readdataa, readdatab, a;
+	logic [31:0] readdataa, readdatab, a, rd, readdata7ex;
+	logic [7:0] readdatabyte;
 	logic [31:0] signimm, signimmsh;
 //	logic [31:0] srca, srcb;
 	logic [31:0] aluresult;
@@ -34,12 +36,16 @@ module datapath(input  logic        clk, reset,
 								 
   // логика регистрового файла
   flopen #(32)   instrreg(clk, reset, irwrite, readdata, instr);
-  flopr #(32)   datareg(clk, reset, readdata, data);
+  flopr #(32)   datareg(clk, reset, rd, data);		//lb
   mux2 #(5)   wrmux(instr[20:16], instr[15:11], regdst, writereg);
   mux2 #(32)  wdregmux(aluout, data, memtoreg, writeregdata);
   signext     se(instr[15:0], signimm);
   regfile rf(clk, regwrite, instr[25:21], instr[20:16], 
   writereg, writeregdata, readdataa, readdatab);
+  
+  mux4 #(8)  databytemux(readdata[7:0], readdata[15:8], readdata[23:16], readdata[31:24], adr[1:0], readdatabyte);//lb
+  signext7 se7(readdatabyte, readdata7ex); // lb
+  mux2 #(32)  datamux(readdata, readdata7ex, lb, rd); //lb
   
    
   // логика АЛУ
