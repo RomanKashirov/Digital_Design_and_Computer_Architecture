@@ -21,7 +21,7 @@ module mips(input logic clk, reset,
 	logic 			pcen;
 	logic [1:0]	pcsrc;
 	logic        zero;
-	logic lb;
+	logic [1:0] lb;
 //	logic [31:0] instr;
 
 	controller c(clk, reset, instr[31:26], instr[5:0], memwrite, lord, irwrite, regdst, 

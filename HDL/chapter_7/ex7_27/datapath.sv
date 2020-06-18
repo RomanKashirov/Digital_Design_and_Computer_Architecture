@@ -15,14 +15,14 @@ module datapath(input  logic        clk, reset,
 					 output logic [31:0] aluout,
 					 output logic [31:0] pc,
 					 output logic [31:0] srca, srcb,
-					 input logic lb); // lb
+					 input logic [1:0] lb); // lb lbu
 					 
 	logic [31:0] pcnext; // test
 //	logic [31:0] pc;
 	logic [31:0] data;
 	logic [4:0] writereg;
 	logic [31:0] writeregdata;
-	logic [31:0] readdataa, readdatab, a, rd, readdata7ex;
+	logic [31:0] readdataa, readdatab, a, rd, readdata7ex, readdataunex; //lb lbu
 	logic [7:0] readdatabyte;
 	logic [31:0] signimm, signimmsh;
 //	logic [31:0] srca, srcb;
@@ -45,7 +45,9 @@ module datapath(input  logic        clk, reset,
   
   mux4 #(8)  databytemux(readdata[7:0], readdata[15:8], readdata[23:16], readdata[31:24], adr[1:0], readdatabyte);//lb
   signext7 se7(readdatabyte, readdata7ex); // lb
-  mux2 #(32)  datamux(readdata, readdata7ex, lb, rd); //lb
+  mux3 #(32)  datamux(readdata, readdata7ex, readdataunex, lb, rd); //lb lbu
+  
+  unsignext7 unse(readdatabyte, readdataunex); // lbu
   
    
   // логика АЛУ

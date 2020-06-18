@@ -44,6 +44,15 @@ module signext7(input logic [7:0] a,
 	assign y={{24{a[7]}}, a};
 endmodule
 
+
+//UN SIGN EXTENSION 8 to 32
+module unsignext7(input logic [7:0] a,
+					output logic [31:0] y);
+	assign y={24'b0, a};
+endmodule
+
+
+
 //RESETTABLE FLIP-FLOP
 module flopr #(parameter WIDTH=8)
 					(input logic clk, reset,

@@ -11,7 +11,7 @@ module controller(input logic clk, reset,
 						output logic [1:0]	pcsrc,
 						input logic        zero,
 						output logic [3:0] state,
-						output logic lb);
+						output logic [1:0] lb);
 						
 						
 	logic [1:0] aluop;
