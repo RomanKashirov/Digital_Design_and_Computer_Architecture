@@ -38,11 +38,20 @@ module signext(input logic [15:0] a,
 	assign y={{16{a[15]}}, a};
 endmodule
 
+
+//ZERO EXTENSION
+module zeroext(input logic [15:0] a,
+					output logic [31:0] y);
+	assign y={16'b0, a};
+endmodule
+
 //SIGN EXTENSION 8 to 32
 module signext7(input logic [7:0] a,
 					output logic [31:0] y);
 	assign y={{24{a[7]}}, a};
 endmodule
+
+
 
 
 //UN SIGN EXTENSION 8 to 32
@@ -113,6 +122,23 @@ endmodule
 
 
 
+// 5:1 MULTIPLEXER
+
+module mux5_32 (input  logic [31:0] d0, d1, d2, d3, d4,
+              input  logic [2:0]       s, 
+              output logic [31:0] y);
+				  
+	always_comb
+    case(s)
+      3'b000: y <= d0; 
+      3'b001: y <= d1; 
+      3'b010: y <= d2; 
+      3'b011: y <= d3; 
+		3'b100: y <= d4;
+		default: y <= 32'bx;
+    endcase
+  
+endmodule
 
 
 

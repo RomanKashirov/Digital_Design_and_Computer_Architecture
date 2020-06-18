@@ -3,7 +3,7 @@ module datapath(input  logic        clk, reset,
                 input  logic        lord, irwrite,
                 input  logic        regdst, memtoreg,
                 input  logic        regwrite, alusrca,
-					 input  logic [1:0]  alusrcb,
+					 input  logic [2:0]  alusrcb,  // andi
                 input  logic [2:0]  alucontrol,
 					 input logic 			pcen, 
 					 input logic [1:0]	pcsrc,
@@ -24,7 +24,7 @@ module datapath(input  logic        clk, reset,
 	logic [31:0] writeregdata;
 	logic [31:0] readdataa, readdatab, a, rd, readdata7ex, readdataunex; //lb lbu
 	logic [7:0] readdatabyte;
-	logic [31:0] signimm, signimmsh;
+	logic [31:0] signimm, signimmsh, zeroeximm; // andi
 //	logic [31:0] srca, srcb;
 	logic [31:0] aluresult;
 //	logic [31:0] aluout;   // отладка
@@ -55,8 +55,10 @@ module datapath(input  logic        clk, reset,
   flopr #(32)   breg(clk, reset, readdatab, writedata);
   mux2 #(32)  srcamux(pc, a, alusrca, srca);
   sl2         immsh(signimm, signimmsh);
-  mux4 #(32)  srcbmux(writedata, 32'b100, signimm, signimmsh, alusrcb, srcb);
+  mux5_32  srcbmux(writedata, 32'b100, signimm, signimmsh, zeroeximm, alusrcb, srcb); // andi
   alu         alu(srca, srcb, alucontrol, aluresult, zero);
+  zeroext ze(instr[15:0], zeroeximm); // andi
+  
   
   // логика следующего pc
   sl2         addsh(instr, addrsh);

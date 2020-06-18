@@ -4,7 +4,7 @@ module testbench();
   logic [31:0] writedata, dataadr;
   logic        memwrite;
   logic [3:0] state;
-  logic [1:0]  alusrcb;
+  logic [2:0]  alusrcb;
   logic [31:0] aluout;
   logic [31:0] pc;
   logic [31:0] instr;
@@ -27,7 +27,7 @@ module testbench();
   always @(negedge clk)
    begin
     if (memwrite) begin
-       if (dataadr === 84 & writedata === 239) begin
+       if (dataadr === 84 & writedata === 224) begin
           $display("Simulation succeeded");
           $stop;
       end else if (dataadr !== 80) begin

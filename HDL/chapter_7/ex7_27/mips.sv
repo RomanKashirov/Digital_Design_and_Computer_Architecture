@@ -5,7 +5,7 @@ module mips(input logic clk, reset,
 				output logic memwrite,
 				input logic [31:0] readdata,
 				output logic [3:0] state,
-				output logic [1:0]  alusrcb,
+				output logic [2:0]  alusrcb,
 				output logic [31:0] aluout,  // test
 				output logic [31:0] pc,
 				output logic [31:0] instr,

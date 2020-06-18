@@ -6,6 +6,7 @@ module aludec(input  logic [5:0] funct,
     case(aluop)
       2'b00: alucontrol <= 3'b010; // add (для lw/sw/addi)
       2'b01: alucontrol <= 3'b110; // sub (для beq)
+		2'b10: alucontrol <= 3'b000; // andi
       default: case(funct)        // инструкции R-типа
           6'b100000: alucontrol <= 3'b010; // add
           6'b100010: alucontrol <= 3'b110; // sub

@@ -4,7 +4,7 @@
               output logic [31:0] writedata, adr,
               output logic        memwrite,
 				  output logic [3:0] state,
-				  output logic [1:0]  alusrcb,
+				  output logic [2:0]  alusrcb,
 				  output logic [31:0] aluout,
 				  output logic [31:0] pc,
 				  output logic [31:0] instr,
