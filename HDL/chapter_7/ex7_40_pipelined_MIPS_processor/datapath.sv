@@ -21,7 +21,7 @@ module datapath(input logic clk, reset,
 					input logic [31:0] ReadDataM); 
 					 
 
-	[31:0] PCW, PCPlus4F, PCPlus4D, ResultW, rd1D, rd2D;
+	logic [31:0] PCW, PCPlus4F, PCPlus4D, ResultW, rdAD, rdBD, AD, BD, PCJumpD, SignImmD;
 	
 // Fetch stage
 	pipregF pregF(clk, reset, StallF, PCW, PCF);	
@@ -31,9 +31,10 @@ module datapath(input logic clk, reset,
 	pipregD pregD(clk, reset, StallD, RegClrD, InstrF, PCPlus4F, InstrD, PCPlus4D);
 	regfile rfD(clk, RegWriteW, InstrD[25:21], InstrD[20:16], WriteRegW, 
 			ResultW, rd1D, rd2D);	
-	mux2 #(32) muxaD(rd1D, rd2D, ForwardAD,
-	output logic [WIDTH-1:0] y);
-					 
+	mux2 #(32) muxaD(rdAD, AluOutM, ForwardAD, AD);
+	mux2 #(32) muxbD(rdBD, AluOutM, ForwardBD, BD);
+	sl2 addshD(InstrD, PCJumpD);
+	signext seD(InstrD[15:0], SignImmD);	
 					 
 					 
 					 
