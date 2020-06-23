@@ -38,48 +38,6 @@ module signext(input logic [15:0] a,
 	assign y={{16{a[15]}}, a};
 endmodule
 
-//FLIP-FLOP with nENABLE (regF)
-module flopen #(parameter WIDTH=8)
-					(input logic clk, reset, nen,
-	input logic [WIDTH-1:0] d,
-	output logic [WIDTH-1:0] q);
-	always_ff @(posedge clk, posedge reset)
-	if (reset) q <= 0;
-	else if (nen == 0) q <= d;
-endmodule
-
-
-// Reg-file for regD
-module regfileD (input logic clk, reset, nen,
-	input logic [31:0] d0, d1,
-	output logic [31:0] q0, q1);
-	
-	logic [63:0] q;
-	
-	assign {q0, q1} = q;
-	
-	always_ff @(posedge clk, posedge reset)
-	if (reset) q <= 0;
-	else if (en == 0) q <= {d0, d1};
-endmodule
-
-
-
-// Reg-file for regE
-module regfileD (input logic clk, reset,
-						input logic 
-
-	input logic [31:0] d0, d1,
-	output logic [31:0] q0, q1);
-	
-	logic [63:0] q;
-	
-	assign {q0, q1} = q;
-	
-	always_ff @(posedge clk, posedge reset)
-	if (reset) q <= 0;
-	else if (en == 0) q <= {d0, d1};
-endmodule
 
 
 
