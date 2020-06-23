@@ -26,7 +26,7 @@ module mips(input logic clk, reset,
 				MemWriteM, AluOutM, WriteDataM, ReadDataM, PCSrcD);
 	
 	
-	hazard hu(StallF, StallD, BranchD, JumpD, ForwardAD, ForwardBD, RsD[4:0], RtD[4:0], FlushE, RsE[4:0], RtE[4:0], 
-				ForwardAE[1:0], ForwardBE[1:0], WriteRegE[4:0], MemtoregE, RegWriteE, WriteRegM[4:0],
-				RegWriteM, WriteRegW[4:0], RegWriteW);
+	hazard hu(StallF, StallD, BranchD, JumpD, ForwardAD, ForwardBD, RsD, RtD, FlushE, RsE, RtE, 
+				ForwardAE, ForwardBE, WriteRegE, MemtoregE, RegWriteE, WriteRegM,
+				RegWriteM, WriteRegW, RegWriteW);
 endmodule
