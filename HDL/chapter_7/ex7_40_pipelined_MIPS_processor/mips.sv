@@ -13,16 +13,17 @@ module mips(input logic clk, reset,
 	logic [4:0] RsD, RtD, RsE, RtE;
 	logic [1:0] ForwardAE, ForwardBE;
 	logic [4:0] WriteRegE, WriteRegM, WriteRegW;
+	logic [1:0] PCSrcD;
 
-	controller c(InstrD[31:26], InstrD[5:0], RegWriteD, MemtoRegD, MemWriteD, ALUControlD[2:0],
-				ALUSrcD, RegDstD, JumpD, BranchD, RegClrD, EqualD);
+	controller c(InstrD[31:26], InstrD[5:0], RegWriteD, MemtoRegD, MemWriteD, ALUControlD,
+				ALUSrcD, RegDstD, JumpD, BranchD, RegClrD, PCSrcD, EqualD);
 				
 	datapath dp(clk, reset, PCF, InstrD, InstrF, RegWriteD, MemtoRegD, MemWriteD, ALUControlD,
 				ALUSrcD, RegDstD, RegClrD, EqualD, 
 				StallF, StallD, ForwardAD, ForwardBD, RsD, RtD, FlushE, RsE, RtE, 
 				ForwardAE, ForwardBE, WriteRegE, MemtoregE, RegWriteE, WriteRegM,
 				RegWriteM, RegWriteW, WriteRegW,
-				MemWriteM, AluOutM, WriteDataM, ReadDataM);
+				MemWriteM, AluOutM, WriteDataM, ReadDataM, PCSrcD);
 	
 	
 	hazard hu(StallF, StallD, BranchD, JumpD, ForwardAD, ForwardBD, RsD[4:0], RtD[4:0], FlushE, RsE[4:0], RtE[4:0], 

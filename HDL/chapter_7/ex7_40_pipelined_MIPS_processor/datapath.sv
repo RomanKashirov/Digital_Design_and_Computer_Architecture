@@ -18,10 +18,11 @@ module datapath(input logic clk, reset,
 					output logic [4:0] WriteRegW,
 					output logic MemWriteM,
 					output logic [31:0] ALUOutM, WriteDataM,
-					input logic [31:0] ReadDataM); 
+					input logic [31:0] ReadDataM,
+					input logic [1:0] PCSrcD); 
 					 
 
-	logic [31:0] PCW, PCPlus4F, PCPlus4D, ResultW, rdAD, rdBD, AD, BD, PCJumpD, SignImmD, SignImmshD,
+	logic [31:0] PCnew, PCPlus4F, PCPlus4D, ResultW, rdAD, rdBD, AD, BD, PCJumpD, SignImmD, SignImmshD,
 						PCBranchD, SrcAE, WriteDataE, SrcBE, ALUOutE, AE, BE, SignImmE, ReadDataM, ALUOutW;
 	logic [4:0]RdD, RdE;
 	logic MemWriteE, ALUSrcE, RegDstE, MemtoRegM, MemtoRegW;
@@ -31,7 +32,7 @@ module datapath(input logic clk, reset,
 	assign RdD = InstrD[15:11];
 	
 // Fetch stage
-	pipregF pregF(clk, reset, StallF, PCW, PCF);	
+	pipregF pregF(clk, reset, StallF, PCnew, PCF);	
 	adder adderF(PCF, 32'd4, PCPlus4F);
 	
 // Decode stage
@@ -65,9 +66,8 @@ module datapath(input logic clk, reset,
 	mux2 #(32) muxresW(ReadDataW, ALUOutW, MemtoRegW, ResultW);
 	
 	
-	
-	
-	mux3 #(32) muxpcW(PCPlus4F, PCBranchD, PCJumpD, PCSrcD, PCW);
+// next PC logic
+	mux3 #(32) muxPCnew(PCPlus4F, PCBranchD, {PCPlus4D[31:28], PCJumpD[27:0]}, PCSrcD, PCnew);
 
 
 
