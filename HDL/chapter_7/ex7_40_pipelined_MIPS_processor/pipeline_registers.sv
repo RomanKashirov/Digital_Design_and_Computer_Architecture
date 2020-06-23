@@ -32,7 +32,7 @@ module pipregE (input logic clk, reset, FlushE,
 						input logic [2:0] ALUControlD,
 						input logic ALUSrcD, RegDstD,
 						input logic [31:0] AD, BD,
-						input logic [5:0] RsD, RtD, RdD,
+						input logic [4:0] RsD, RtD, RdD,
 						input logic [31:0] SignImmD,
 						
 						output logic RegWriteE, MemtoRegE, MemWriteE, 

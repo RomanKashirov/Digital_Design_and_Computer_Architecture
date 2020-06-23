@@ -4,24 +4,31 @@ module datapath(input logic clk, reset,
 					output logic [31:0] PCF, InstrD, 
 					input logic RegWriteD, MemtoRegD, MemWriteD, 
 					input logic [2:0] ALUControlD,
-					input logic ALUSrcD, RegDstD, JumpD, BranchD, RegClrD, 
+					input logic ALUSrcD, RegDstD, RegClrD, 
 					output logic EqualD,
 					input logic StallF, StallD, ForwardAD, ForwardBD, 
-					output logic RsD, RtD, 
+					output logic [4:0]RsD, RtD, 
 					input logic FlushE, 
 					output logic RsE, RtE, 
 					input logic [1:0] ForwardAE, ForwardBE, 
 					output logic [4:0] WriteRegE, 
-					output logic MemtoregE, RegWriteE, 
+					output logic MemtoRegE, RegWriteE, 
 					output logic [4:0] WriteRegM,
 					output logic RegWriteM, RegWriteW,
 					output logic [4:0] WriteRegW,
 					output logic MemWriteM,
-					output logic [31:0] AluOutM, WriteDataM,
+					output logic [31:0] ALUOutM, WriteDataM,
 					input logic [31:0] ReadDataM); 
 					 
 
-	logic [31:0] PCW, PCPlus4F, PCPlus4D, ResultW, rdAD, rdBD, AD, BD, PCJumpD, SignImmD;
+	logic [31:0] PCW, PCPlus4F, PCPlus4D, ResultW, rdAD, rdBD, AD, BD, PCJumpD, SignImmD, SignImmshD,
+						PCBranchD, SrcAE, WriteDataE, SrcBE, ALUOutE, AE, BE, SignImmE, ReadDataM, ALUOutW;
+	logic [4:0]RdD, RdE;
+	logic MemWriteE, ALUSrcE, RegDstE, MemtoRegM, MemtoRegW;
+	logic [2:0]ALUControlE;
+	assign RsD = InstrD[25:21];
+	assign RtD = InstrD[20:16];
+	assign RdD = InstrD[15:11];
 	
 // Fetch stage
 	pipregF pregF(clk, reset, StallF, PCW, PCF);	
@@ -35,72 +42,36 @@ module datapath(input logic clk, reset,
 	mux2 #(32) muxbD(rdBD, AluOutM, ForwardBD, BD);
 	sl2 addshD(InstrD, PCJumpD);
 	signext seD(InstrD[15:0], SignImmD);	
+	sl2 immshD(SignImmD, SignImmshD);
+	adder adderD(SignImmshD, PCPlus4D, PCBranchD);
+	comparator #(32) compD(AD, BD, EqualD);
 					 
-					 
-					 
-					 
-					 
-					 
-					 
-					 
-					 
-					 
-					 
-					 
-					 
-					 
-					 
-					 
-					 
-					 
-					 
-					 
-					 
-					 
-					 
-					 
-					 
-					 
-					 
-					 
-					 
-					 
+// Execute stage
+	pipregE pregE(clk, reset, FlushE, RegWriteD, MemtoRegD, MemWriteD, ALUControlD, ALUSrcD, RegDstD, AD, BD, RsD, RtD, RdD, SignImmD,
+												 RegWriteE, MemtoRegE, MemWriteE, ALUControlE, ALUSrcE, RegDstE, AE, BE, RsE, RtE, RdE, SignImmE);
+	mux2 #(5) muxregE(RtE, RdE, RegDstE, WriteRegE);
+	mux3 #(32) muxaE(AE, ResultW, AluOutM, ForwardAE, SrcAE);
+	mux3 #(32) muxbE(BE, ResultW, AluOutM, ForwardBE, WriteDataE);
+	mux2 #(32) muxaluE(WriteDataE, SignImmE, ALUSrcE, SrcBE);
+	alu aluE(SrcAE, SrcBE, ALUControlE, AluOutE);				 
+
+//  Memory stage
+	pipregM pregM(clk, reset, RegWriteE, MemtoRegE, MemWriteE, ALUOutE, WriteDataE, WriteRegE,
+									  RegWriteM, MemtoRegM, MemWriteM, ALUOutM, WriteDataM, WriteRegM);
 	
-	// логика адреса памяти
-	flopen #(32)   pcreg(clk, reset, pcen, pcnext, pc);
-	mux2 #(32)    adrmux(pc, aluout, lord, adr);
-								 
-  // логика регистрового файла
-  flopen #(32)   instrreg(clk, reset, irwrite, readdata, instr);
-  flopr #(32)   datareg(clk, reset, rd, data);		//lb
-  mux2 #(5)   wrmux(instr[20:16], instr[15:11], regdst, writereg);
-  mux2 #(32)  wdregmux(aluout, data, memtoreg, writeregdata);
-  signext     se(instr[15:0], signimm);
-  regfile rf(clk, regwrite, instr[25:21], instr[20:16], 
-  writereg, writeregdata, readdataa, readdatab);
-  
-  mux4 #(8)  databytemux(readdata[7:0], readdata[15:8], readdata[23:16], readdata[31:24], adr[1:0], readdatabyte);//lb
-  signext7 se7(readdatabyte, readdata7ex); // lb
-  mux3 #(32)  datamux(readdata, readdata7ex, readdataunex, lb, rd); //lb lbu
-  
-  unsignext7 unse(readdatabyte, readdataunex); // lbu
-  
-   
-  // логика АЛУ
-  flopr #(32)   areg(clk, reset, readdataa, a);
-  flopr #(32)   breg(clk, reset, readdatab, writedata);
-  mux2 #(32)  srcamux(pc, a, alusrca, srca);
-  sl2         immsh(signimm, signimmsh);
-  mux5_32  srcbmux(writedata, 32'b100, signimm, signimmsh, zeroeximm, alusrcb, srcb); // andi
-  alu         alu(srca, srcb, alucontrol, aluresult, zero);
-  zeroext ze(instr[15:0], zeroeximm); // andi
-  
-  
-  // логика следующего pc
-  sl2         addsh(instr, addrsh);
-  flopr #(32)   alureg(clk, reset, aluresult, aluout);
-  mux3 #(32)  pcmux(aluresult, aluout, {pc[31:28], addrsh[27:0]}, pcsrc, pcnext);
-  
-  
-  
+// Writeback stage
+	pipregW (clk, reset, RegWriteM, MemtoRegM, ReadDataM, ALUOutM, WriteRegM,
+								RegWriteW, MemtoRegW, ReadDataW, ALUOutW, WriteRegW);
+	mux2 #(32) muxresW(ReadDataW, ALUOutW, MemtoRegW, ResultW);
+	
+	
+	
+	
+	mux3 #(32) muxpcW(PCPlus4F, PCBranchD, PCJumpD, PCSrcD, PCW);
+
+
+
+	
+					 
+
 endmodule
