@@ -2,7 +2,7 @@
 
 module mips(input logic clk, reset,
 				output logic [31:0] PCF,
-				input logic [31:0] InstrF,
+				input logic [31:0] InstrF, InstrD,
 				output logic MemWriteM,
 				output logic [31:0] AluOutM, WriteDataM,
 				input logic [31:0] ReadDataM);
@@ -14,7 +14,7 @@ module mips(input logic clk, reset,
 				  MemtoregE, RegWriteE, 
 				RegWriteM, RegWriteW;
 	logic [1:0] ForwardAE, ForwardBE;
-	logic [4:0] WriteRegE, WriteRegM;
+	logic [4:0] WriteRegE, WriteRegM, WriteRegW;
 
 	controller c(InstrD[31:26], InstrD[5:0], RegWriteD, MemtoRegD, MemWriteD, ALUControlD[2:0],
 				ALUSrcD, RegDstD, JumpD, BranchD, RegClrD, EqualD);
@@ -23,11 +23,11 @@ module mips(input logic clk, reset,
 				ALUSrcD, RegDstD, JumpD, BranchD, RegClrD, EqualD, 
 				StallF, StallD, ForwardAD, ForwardBD, RsD, RtD, FlushE, RsE, RtE, 
 				ForwardAE, ForwardBE, WriteRegE, MemtoregE, RegWriteE, WriteRegM,
-				RegWriteM, RegWriteW,
+				RegWriteM, RegWriteW, WriteRegW,
 				MemWriteM, AluOutM, WriteDataM, ReadDataM);
 	
 	
 	hazard hu(StallF, StallD, BranchD, JumpD, ForwardAD, ForwardBD, RsD, RtD, FlushE, RsE, RtE, 
 				ForwardAE[1:0], ForwardBE[1:0], WriteRegE[4:0], MemtoregE, RegWriteE, WriteRegM[4:0],
-				RegWriteM, RegWriteW);
+				RegWriteM, WriteRegW[4:0], RegWriteW);
 endmodule

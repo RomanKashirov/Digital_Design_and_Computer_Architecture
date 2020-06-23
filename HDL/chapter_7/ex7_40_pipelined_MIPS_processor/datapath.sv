@@ -1,7 +1,7 @@
 // Тракт данных многотактного MIPS-процессора
 
 module datapath(input logic clk, reset, 
-					output logic [31:0] PCF, InstrD, InstrF,
+					output logic [31:0] PCF, InstrD, 
 					input logic RegWriteD, MemtoRegD, MemWriteD, 
 					input logic [2:0] ALUControlD,
 					input logic ALUSrcD, RegDstD, JumpD, BranchD, RegClrD, 
@@ -14,15 +14,25 @@ module datapath(input logic clk, reset,
 					output logic [4:0] WriteRegE, 
 					output logic MemtoregE, RegWriteE, 
 					output logic [4:0] WriteRegM,
-					output logic RegWriteM, RegWriteW
+					output logic RegWriteM, RegWriteW,
+					output logic [4:0] WriteRegW,
 					output logic MemWriteM,
 					output logic [31:0] AluOutM, WriteDataM,
 					input logic [31:0] ReadDataM); 
 					 
 
-					 
-					 
-					 
+	[31:0] PCW, PCPlus4F, PCPlus4D, ResultW, rd1D, rd2D;
+	
+// Fetch stage
+	pipregF pregF(clk, reset, StallF, PCW, PCF);	
+	adder adderF(PCF, 32'd4, PCPlus4F);
+	
+// Decode stage
+	pipregD pregD(clk, reset, StallD, RegClrD, InstrF, PCPlus4F, InstrD, PCPlus4D);
+	regfile rfD(clk, RegWriteW, InstrD[25:21], InstrD[20:16], WriteRegW, 
+			ResultW, rd1D, rd2D);	
+	mux2 #(32) muxaD(rd1D, rd2D, ForwardAD,
+	output logic [WIDTH-1:0] y);
 					 
 					 
 					 

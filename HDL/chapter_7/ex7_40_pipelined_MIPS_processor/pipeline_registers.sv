@@ -1,17 +1,17 @@
 // Конвейерные регистры
 
 //Reg-file F
-module regfileF (input logic clk, reset, nEN,
+module regfileF (input logic clk, reset, StallF,
 	input logic [31:0] PCW,
 	output logic [31:0] PCF);
 	always_ff @(posedge clk, posedge reset)
 	if (reset) PCF <= 0;
-	else if (nEN == 0) PCF <= PCW;
+	else if (StallF == 0) PCF <= PCW;
 endmodule
 
 
 // Reg-file D
-module regfileD (input logic clk, reset, nEN, CLR,
+module regfileD (input logic clk, reset, StallD, RegClrD,
 	input logic [31:0] InstrF, PCPlus4F,
 	output logic [31:0] InstrD, PCPlus4D);
 	
@@ -20,14 +20,14 @@ module regfileD (input logic clk, reset, nEN, CLR,
 	assign {InstrD, PCPlus4D} = q;
 	
 	always_ff @(posedge clk, posedge reset)
-	if (reset | CLR) q <= 0;
-	else if (nEN == 0) q <= {InstrF, PCPlus4F};
+	if (reset | RegClrD) q <= 0;
+	else if (StallD == 0) q <= {InstrF, PCPlus4F};
 endmodule
 
 
 
 // Reg-file E
-module regfileE (input logic clk, reset, CLR,
+module regfileE (input logic clk, reset, FlushE,
 						input logic RegWriteD, MemtoRegD, MemWriteD, 
 						input logic [2:0] ALUControlD,
 						input logic ALUSrcD, RegDstD,
