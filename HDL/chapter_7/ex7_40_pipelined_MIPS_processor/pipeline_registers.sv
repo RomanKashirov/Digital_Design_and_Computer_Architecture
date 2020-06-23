@@ -1,7 +1,7 @@
 // Конвейерные регистры
 
-//Reg-file F
-module regfileF (input logic clk, reset, StallF,
+//Pipeline register F
+module pipregF (input logic clk, reset, StallF,
 	input logic [31:0] PCW,
 	output logic [31:0] PCF);
 	always_ff @(posedge clk, posedge reset)
@@ -10,8 +10,8 @@ module regfileF (input logic clk, reset, StallF,
 endmodule
 
 
-// Reg-file D
-module regfileD (input logic clk, reset, StallD, RegClrD,
+// Pipeline register D
+module pipregD (input logic clk, reset, StallD, RegClrD,
 	input logic [31:0] InstrF, PCPlus4F,
 	output logic [31:0] InstrD, PCPlus4D);
 	
@@ -26,8 +26,8 @@ endmodule
 
 
 
-// Reg-file E
-module regfileE (input logic clk, reset, FlushE,
+// Pipeline register E
+module pipregE (input logic clk, reset, FlushE,
 						input logic RegWriteD, MemtoRegD, MemWriteD, 
 						input logic [2:0] ALUControlD,
 						input logic ALUSrcD, RegDstD,
@@ -53,8 +53,8 @@ endmodule
 
 
 
-// Reg-file M
-module regfileM (input logic clk, reset, 
+// Pipeline register M
+module pipregM (input logic clk, reset, 
 						input logic RegWriteE, MemtoRegE, MemWriteE, 
 						input logic [31:0] ALUOutE,
 						input logic [31:0] WriteDataE,
@@ -75,8 +75,8 @@ module regfileM (input logic clk, reset,
 endmodule
 
 
-// Reg-file W
-module regfileW (input logic clk, reset, 
+// Pipeline register W
+module pipregW (input logic clk, reset, 
 						input logic RegWriteM, MemtoRegM, 
 						input logic [31:0] ReadDataM,
 						input logic [31:0] ALUOutM,
