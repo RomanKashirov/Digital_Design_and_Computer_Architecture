@@ -6,7 +6,6 @@ module controller(input  logic [5:0] op, funct,
 						input logic EqualD);
 						
   logic [1:0] aluop;
-  logic       branch;
   logic pcsrc0;
   
   

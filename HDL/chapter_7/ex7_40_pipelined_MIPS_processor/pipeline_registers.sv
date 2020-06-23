@@ -12,14 +12,16 @@ endmodule
 
 // Pipeline register D
 module pipregD (input logic clk, reset, StallD, RegClrD,
-	input logic [31:0] InstrF, PCPlus4F,
-	output logic [31:0] InstrD, PCPlus4D);
+					input logic [31:0] InstrF, PCPlus4F,
+					output logic [31:0] InstrD, PCPlus4D);
 	
 	logic [63:0] q;
 	
 	assign {InstrD, PCPlus4D} = q;
 	
-	always_ff @(posedge clk, posedge reset)
+	
+	
+	always_ff @(posedge clk, posedge reset, posedge RegClrD)
 	if (reset | RegClrD) q <= 0;
 	else if (StallD == 0) q <= {InstrF, PCPlus4F};
 endmodule
@@ -42,12 +44,12 @@ module pipregE (input logic clk, reset, FlushE,
 						output logic [4:0] RsE, RtE, RdE,
 						output logic [31:0] SignImmE);
 	
-	logic [108:0] q;
+	logic [118:0] q;
 	
 	assign {RegWriteE, MemtoRegE, MemWriteE, ALUControlE, ALUSrcE, RegDstE, AE, BE, RsE, RtE, RdE, SignImmE} = q;
 	
-	always_ff @(posedge clk, posedge reset)
-	if (reset | CLR) q <= 0;
+	always_ff @(posedge clk, posedge reset, posedge FlushE)
+	if (reset | FlushE) q <= 0;
 	else q <= {RegWriteD, MemtoRegD, MemWriteD, ALUControlD, ALUSrcD, RegDstD, AD, BD, RsD, RtD, RdD, SignImmD};
 endmodule
 
@@ -83,9 +85,9 @@ module pipregW (input logic clk, reset,
 						input logic [4:0] WriteRegM,
 						
 						output logic RegWriteW, MemtoRegW, 
-						input logic [31:0] ReadDataW,
-						input logic [31:0] ALUOutW,
-						input logic [4:0] WriteRegW);
+						output logic [31:0] ReadDataW,
+						output logic [31:0] ALUOutW,
+						output logic [4:0] WriteRegW);
 	
 	logic [70:0] q;
 	
