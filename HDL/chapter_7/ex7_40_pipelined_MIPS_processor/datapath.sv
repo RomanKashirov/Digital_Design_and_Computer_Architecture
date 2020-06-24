@@ -1,7 +1,8 @@
 // Тракт данных многотактного MIPS-процессора
 
 module datapath(input logic clk, reset, 
-					output logic [31:0] PCF, InstrD, InstrF, 
+					output logic [31:0] PCF, InstrD, 
+					input logic [31:0] InstrF, 
 					input logic RegWriteD, MemtoRegD, MemWriteD, 
 					input logic [2:0] ALUControlD,
 					input logic ALUSrcD, RegDstD, RegClrD, 
@@ -9,7 +10,7 @@ module datapath(input logic clk, reset,
 					input logic StallF, StallD, ForwardAD, ForwardBD, 
 					output logic [4:0]RsD, RtD, 
 					input logic FlushE, 
-					output logic RsE, RtE, 
+					output logic [4:0]RsE, RtE, 
 					input logic [1:0] ForwardAE, ForwardBE, 
 					output logic [4:0] WriteRegE, 
 					output logic MemtoRegE, RegWriteE, 
@@ -20,10 +21,11 @@ module datapath(input logic clk, reset,
 					output logic [31:0] ALUOutM, WriteDataM,
 					input logic [31:0] ReadDataM,
 					input logic [1:0] PCSrcD,
-					output logic MemtoRegM); 
+					output logic MemtoRegM,
+					output logic [31:0] PCPlus4F); // test
 					 
 
-	logic [31:0] PCnew, PCPlus4F, PCPlus4D, ResultW, rdAD, rdBD, AD, BD, PCJumpD, SignImmD, SignImmshD,
+	logic [31:0] PCnew, PCPlus4D, ResultW, rdAD, rdBD, AD, BD, PCJumpD, SignImmD, SignImmshD,
 						PCBranchD, SrcAE, WriteDataE, SrcBE, ALUOutE, AE, BE, SignImmE, ALUOutW, ReadDataW;
 	logic [4:0]RdD, RdE;
 	logic MemWriteE, ALUSrcE, RegDstE, MemtoRegW;

@@ -13,7 +13,7 @@ logic [31:0] rf[31:0];
 // register 0 hardwired to 0
 // note: for pipelined processor, write third port
 // on falling edge of clk
-	always_ff @(posedge clk)
+	always_ff @(negedge clk)
 	if (we3) rf[wa3] <= wd3;
 	assign rd1=(ra1 != 0) ? rf[ra1] : 0;
 	assign rd2=(ra2 != 0) ? rf[ra2] : 0;

@@ -6,7 +6,7 @@ module pipregF (input logic clk, reset, StallF,
 	output logic [31:0] PCF);
 	always_ff @(posedge clk, posedge reset)
 	if (reset) PCF <= 0;
-	else if (StallF == 0) PCF <= PCW;
+	else if (StallF != 1) PCF <= PCW;
 endmodule
 
 
@@ -14,16 +14,12 @@ endmodule
 module pipregD (input logic clk, reset, StallD, RegClrD,
 					input logic [31:0] InstrF, PCPlus4F,
 					output logic [31:0] InstrD, PCPlus4D);
-	
 	logic [63:0] q;
-	
 	assign {InstrD, PCPlus4D} = q;
-	
-	
 	
 	always_ff @(posedge clk, posedge reset, posedge RegClrD)
 	if (reset | RegClrD) q <= 0;
-	else if (StallD == 0) q <= {InstrF, PCPlus4F};
+	else if (StallD != 1 ) q <= {InstrF, PCPlus4F};
 endmodule
 
 
