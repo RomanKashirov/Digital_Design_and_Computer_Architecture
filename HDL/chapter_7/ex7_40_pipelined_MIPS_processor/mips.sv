@@ -8,9 +8,11 @@ module mips(input logic clk, reset,
 				input logic [31:0] ReadDataM,
 				output logic [31:0] InstrD, // test
 				output logic StallD,				// test
-				output logic [31:0] PCPlus4F); // test
+				output logic [31:0] PCPlus4F, // test
+				output logic MemWriteD,			// test
+				output logic [31:0] rdBD); // test
 
-	logic RegWriteD, MemtoRegD, MemWriteD, ALUSrcD, RegDstD, JumpD, BranchD, RegClrD, EqualD, MemtoRegM;
+	logic RegWriteD, MemtoRegD, ALUSrcD, RegDstD, JumpD, BranchD, RegClrD, EqualD, MemtoRegM;
 	logic [2:0]ALUControlD;
 	logic StallF, ForwardAD, ForwardBD, FlushE, MemtoRegE, RegWriteE, RegWriteM, RegWriteW;
 	logic [4:0] RsD, RtD, RsE, RtE;
@@ -27,7 +29,7 @@ module mips(input logic clk, reset,
 				StallF, StallD, ForwardAD, ForwardBD, RsD, RtD, FlushE, RsE, RtE, 
 				ForwardAE, ForwardBE, WriteRegE, MemtoRegE, RegWriteE, WriteRegM,
 				RegWriteM, RegWriteW, WriteRegW,
-				MemWriteM, AluOutM, WriteDataM, ReadDataM, PCSrcD, MemtoRegM, PCPlus4F);
+				MemWriteM, AluOutM, WriteDataM, ReadDataM, PCSrcD, MemtoRegM, PCPlus4F, rdBD);
 	
 	
 	hazard hu(StallF, StallD, BranchD, JumpD, ForwardAD, ForwardBD, RsD, RtD, FlushE, RsE, RtE, 

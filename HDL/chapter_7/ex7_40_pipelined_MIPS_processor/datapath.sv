@@ -22,10 +22,11 @@ module datapath(input logic clk, reset,
 					input logic [31:0] ReadDataM,
 					input logic [1:0] PCSrcD,
 					output logic MemtoRegM,
-					output logic [31:0] PCPlus4F); // test
+					output logic [31:0] PCPlus4F,
+					output logic [31:0] rdBD); // test
 					 
 
-	logic [31:0] PCnew, PCPlus4D, ResultW, rdAD, rdBD, AD, BD, PCJumpD, SignImmD, SignImmshD,
+	logic [31:0] PCnew, PCPlus4D, ResultW, rdAD, AD, BD, PCJumpD, SignImmD, SignImmshD,
 						PCBranchD, SrcAE, WriteDataE, SrcBE, ALUOutE, AE, BE, SignImmE, ALUOutW, ReadDataW;
 	logic [4:0]RdD, RdE;
 	logic MemWriteE, ALUSrcE, RegDstE, MemtoRegW;

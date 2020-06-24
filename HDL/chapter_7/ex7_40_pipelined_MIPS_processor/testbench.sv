@@ -7,8 +7,11 @@ module testbench();
   logic [31:0] instrD;
   logic stallD;
   logic [31:0] PCPlus4F;
+  logic MemWriteD;
+  logic [31:0] rdBD;
   // определить тестируемое устройство
-  top dut (clk, reset, writedata, dataadr, instr, readdata, memwrite, instrD, stallD, PCPlus4F);
+  top dut (clk, reset, writedata, dataadr, instr, readdata, memwrite, instrD, stallD, PCPlus4F, MemWriteD,
+				rdBD);
   // инициализировать тест
   initial
     begin
