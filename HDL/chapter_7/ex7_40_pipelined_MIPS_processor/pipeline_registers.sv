@@ -17,8 +17,9 @@ module pipregD (input logic clk, reset, StallD, RegClrD,
 	logic [63:0] q;
 	assign {InstrD, PCPlus4D} = q;
 	
-	always_ff @(posedge clk, posedge reset, posedge RegClrD)
-	if (reset | RegClrD) q <= 0;
+	always_ff @(posedge clk, posedge reset)
+	if (reset) q <= 0;
+	else if (RegClrD) q <= 0;
 	else if (StallD != 1 ) q <= {InstrF, PCPlus4F};
 endmodule
 
@@ -45,7 +46,8 @@ module pipregE (input logic clk, reset, FlushE,
 	assign {RegWriteE, MemtoRegE, MemWriteE, ALUControlE, ALUSrcE, RegDstE, AE, BE, RsE, RtE, RdE, SignImmE} = q;
 	
 	always_ff @(posedge clk, posedge reset, posedge FlushE)
-	if (reset | FlushE) q <= 0;
+	if (reset) q <= 0;
+	else if (FlushE) q <= 0;
 	else q <= {RegWriteD, MemtoRegD, MemWriteD, ALUControlD, ALUSrcD, RegDstD, AD, BD, RsD, RtD, RdD, SignImmD};
 endmodule
 

@@ -23,17 +23,21 @@ module datapath(input logic clk, reset,
 					input logic [1:0] PCSrcD,
 					output logic MemtoRegM,
 					output logic [31:0] PCPlus4F,
-					output logic [31:0] rdBD); // test
+					output logic [31:0] rdBD, // test
+					output logic [31:0] ResultW, // test
+					output logic [31:0] SrcAE, SrcBE,
+					output logic [31:0] JampAdrrD); // test
 					 
 
-	logic [31:0] PCnew, PCPlus4D, ResultW, rdAD, AD, BD, PCJumpD, SignImmD, SignImmshD,
-						PCBranchD, SrcAE, WriteDataE, SrcBE, ALUOutE, AE, BE, SignImmE, ALUOutW, ReadDataW;
+	logic [31:0] PCnew, PCPlus4D, PCJumpD, rdAD, AD, BD,  SignImmD, SignImmshD,
+						PCBranchD, WriteDataE, ALUOutE, AE, BE, SignImmE, ALUOutW, ReadDataW;
 	logic [4:0]RdD, RdE;
 	logic MemWriteE, ALUSrcE, RegDstE, MemtoRegW;
 	logic [2:0]ALUControlE;
 	assign RsD = InstrD[25:21];
 	assign RtD = InstrD[20:16];
 	assign RdD = InstrD[15:11];
+	assign JampAdrrD = {PCPlus4D[31:28], PCJumpD[27:0]};
 	
 // Fetch stage
 	pipregF pregF(clk, reset, StallF, PCnew, PCF);	
@@ -67,11 +71,11 @@ module datapath(input logic clk, reset,
 // Writeback stage
 	pipregW pregW(clk, reset, RegWriteM, MemtoRegM, ReadDataM, ALUOutM, WriteRegM,
 								RegWriteW, MemtoRegW, ReadDataW, ALUOutW, WriteRegW);
-	mux2 #(32) muxresW(ReadDataW, ALUOutW, MemtoRegW, ResultW);
+	mux2 #(32) muxresW(ALUOutW, ReadDataW, MemtoRegW, ResultW);
 	
 	
 // next PC logic
-	mux3 #(32) muxPCnew(PCPlus4F, PCBranchD, {PCPlus4D[31:28], PCJumpD[27:0]}, PCSrcD, PCnew);
+	mux3 #(32) muxPCnew(PCPlus4F, PCBranchD, JampAdrrD, PCSrcD, PCnew);
 
 
 
