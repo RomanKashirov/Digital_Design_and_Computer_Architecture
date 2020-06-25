@@ -8,9 +8,9 @@ module datapath(input logic clk, reset,
 					input logic ALUSrcD, RegDstD, RegClrD, 
 					output logic EqualD,
 					input logic StallF, StallD, ForwardAD, ForwardBD, 
-					output logic [4:0]RsD, RtD, 
+					output logic [4:0] RsD, RtD, 
 					input logic FlushE, 
-					output logic [4:0]RsE, RtE, 
+					output logic [4:0] RsE, RtE, 
 					input logic [1:0] ForwardAE, ForwardBE, 
 					output logic [4:0] WriteRegE, 
 					output logic MemtoRegE, RegWriteE, 
@@ -31,9 +31,9 @@ module datapath(input logic clk, reset,
 
 	logic [31:0] PCnew, PCPlus4D, PCJumpD, rdAD, AD, BD,  SignImmD, SignImmshD,
 						PCBranchD, WriteDataE, ALUOutE, AE, BE, SignImmE, ALUOutW, ReadDataW;
-	logic [4:0]RdD, RdE;
+	logic [4:0] RdD, RdE;
 	logic MemWriteE, ALUSrcE, RegDstE, MemtoRegW;
-	logic [2:0]ALUControlE;
+	logic [2:0] ALUControlE;
 	assign RsD = InstrD[25:21];
 	assign RtD = InstrD[20:16];
 	assign RdD = InstrD[15:11];

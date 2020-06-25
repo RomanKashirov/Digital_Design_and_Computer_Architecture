@@ -45,7 +45,7 @@ module pipregE (input logic clk, reset, FlushE,
 	
 	assign {RegWriteE, MemtoRegE, MemWriteE, ALUControlE, ALUSrcE, RegDstE, AE, BE, RsE, RtE, RdE, SignImmE} = q;
 	
-	always_ff @(posedge clk, posedge reset, posedge FlushE)
+	always_ff @(posedge clk, posedge reset)
 	if (reset) q <= 0;
 	else if (FlushE) q <= 0;
 	else q <= {RegWriteD, MemtoRegD, MemWriteD, ALUControlD, ALUSrcD, RegDstD, AD, BD, RsD, RtD, RdD, SignImmD};
