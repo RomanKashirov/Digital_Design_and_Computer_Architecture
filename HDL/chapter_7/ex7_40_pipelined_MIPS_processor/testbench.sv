@@ -8,14 +8,15 @@ module testbench();
   logic stallD;
   logic [31:0] PCPlus4F;
   logic MemWriteD;
-  logic [31:0] rdBD;
+  logic [31:0] rdBD, rdAD, AD, BD;
   logic [4:0] WriteRegW; // test
 	logic RegWriteW; // test
 	logic [31:0] ResultW, SrcAE, SrcBE; // test
 	logic [31:0] JampAdrrD;
+	logic EqualD;
   // определить тестируемое устройство
   top dut (clk, reset, writedata, dataadr, instr, readdata, memwrite, instrD, stallD, PCPlus4F, MemWriteD,
-				rdBD, WriteRegW, RegWriteW, ResultW, SrcAE, SrcBE, JampAdrrD);
+				rdBD, rdAD, AD, BD, WriteRegW, RegWriteW, ResultW, SrcAE, SrcBE, JampAdrrD, EqualD);
   // инициализировать тест
   initial
     begin
@@ -30,7 +31,7 @@ module testbench();
   always @(negedge clk)
    begin
     if (memwrite) begin
-       if (dataadr === 84 & writedata === 11497) begin
+       if (dataadr === 84 & writedata === 8781) begin
           $display("Simulation succeeded");
           $stop;
       end else if (dataadr !== 80) begin

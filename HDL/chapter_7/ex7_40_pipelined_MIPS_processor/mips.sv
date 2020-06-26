@@ -10,13 +10,14 @@ module mips(input logic clk, reset,
 				output logic StallD,				// test
 				output logic [31:0] PCPlus4F, // test
 				output logic MemWriteD,			// test
-				output logic [31:0] rdBD,			// test
+				output logic [31:0] rdBD,rdAD, AD, BD,			// test
 				output logic [4:0] WriteRegW, // test
 				output logic RegWriteW, // test
 				output logic [31:0] ResultW, SrcAE, SrcBE, //test
-				output logic [31:0] JampAdrrD); // test
+				output logic [31:0] JampAdrrD,
+				output logic EqualD); // test
 
-	logic RegWriteD, MemtoRegD, ALUSrcD, RegDstD, JumpD, BranchD, RegClrD, EqualD, MemtoRegM;
+	logic RegWriteD, MemtoRegD, ALUSrcD, RegDstD, JumpD, BranchD, RegClrD, MemtoRegM;
 	logic [2:0]ALUControlD;
 	logic StallF, ForwardAD, ForwardBD, FlushE, MemtoRegE, RegWriteE, RegWriteM;
 	logic [4:0] RsD, RtD, RsE, RtE;
@@ -33,7 +34,7 @@ module mips(input logic clk, reset,
 				StallF, StallD, ForwardAD, ForwardBD, RsD, RtD, FlushE, RsE, RtE, 
 				ForwardAE, ForwardBE, WriteRegE, MemtoRegE, RegWriteE, WriteRegM,
 				RegWriteM, RegWriteW, WriteRegW,
-				MemWriteM, AluOutM, WriteDataM, ReadDataM, PCSrcD, MemtoRegM, PCPlus4F, rdBD, ResultW, SrcAE, SrcBE,
+				MemWriteM, AluOutM, WriteDataM, ReadDataM, PCSrcD, MemtoRegM, PCPlus4F, rdBD, rdAD, AD, BD,ResultW, SrcAE, SrcBE,
 				JampAdrrD);
 	
 	
