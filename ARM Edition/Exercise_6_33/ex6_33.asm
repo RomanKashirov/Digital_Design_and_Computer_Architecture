@@ -13,7 +13,7 @@ FOR
 	ADD R4, R4, #1				; increment i
 	MOV  R0, R5      			; set up input arguments
 	CMP R4, 10
-	BLT FOR
+	BLT FOR						; i < 10?
 	ADD SP, SP, #40 			; deallocate stack space
 	POP {R4, R5, LR} 			; restore preserved registers
 	MOV PC, LR 					; return from SET_ARRAY
@@ -21,7 +21,7 @@ FOR
 COMPARE
 	PUSH {LR} 					; save LR
 	BL SUBTRACTION				; call SUBTRACTION function
-	CMP R0, #0					
+	CMP R0, #0					; returned value >= 0?
 	MOVGE R0, #1     			; if yes, R0 = 1 
 	MOVLT R0, #0     			; if no, R0 = 0 
 	POP {LR} 					; restore LR
