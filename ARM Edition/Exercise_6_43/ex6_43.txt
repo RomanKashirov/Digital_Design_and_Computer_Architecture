@@ -1,20 +1,25 @@
 machine code		address		Label		ARM assembly
-					0x8530
+					
 E92D4010			0x8534		MAIN		STMDB R13!,{R4,R14}
 E3A0400F			0x8538					MOV   R4, #15
 E59F3DC1			0x853c					LDR   R3, =L2 				; транслируется в команду загрузки относительно PC
 E5834000			0x8540					STR   R4, [R3]
 E3A0101B			0x8544					MOV R1, #27
-					0x8548
-					0x854c
-					0x8550
-					0x8554
-					0x8558
-					0x855c
-					0x8560
-					0x8564
-					0x8568
-					0x856c
+E5831004			0x8548					STR R1, [R3, #4]
+E5930000			0x854c					LDR R0, [R3]
+EB000001			0x8550					BL GREATER
+E8BD4010			0x8554					LDMIA R13!,{R4,R14}
+E1A0F00E			0x8558					MOV PC, LR
+E1500001			0x855c	  GREATER		CMP R0, R1
+E3A00000			0x8560					MOV R0, #0					
+C3A00001			0x8564					MOVGT R0, #1
+E1A0F00E			0x8568					MOV PC, LR
+					
 
 
 					0x9305  	L2
+					
+					
+					
+
+
