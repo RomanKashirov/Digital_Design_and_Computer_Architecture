@@ -15,9 +15,8 @@ void change_words(char* str)
 	}
 }
 
-int seek_symb(char* str, char symb, int start)
+int seek_symb(char* str, char symb, int i)
 {
-	int i = start;
 	while((str[i]!= symb)&&(str[i]!= '\0'))
 	{
 		i++;
