@@ -45,21 +45,18 @@ seek_symb		LDRB R3, [R0, R2]					; R3 = str[i]
 SEEK_DONE		SUB R0, R2, #1						; return i - 1
 				BX    lr							; return to caller
 
-				; R0 - char *str, R1 - int start, R2 - int end, R3 - i, R4 - c, R5 - str[start+i], R6 - str[end-i], R7 - start+i, R8 - end-i
-change_chars	PUSH {R4, R5, R6, R7, R8}
-				SUB R4, R2, R1
-				LSR R4, #1							; int c = (end-start)>>1
-				MOV R3, #0							; i = 0
-CHANGE_LOOP		ADD R7, R1, R3						; start + i
-				SUB R8, R2, R3						; end - 1
-				LDRB R5, [R0, R7]					; R5 = str[start+i]
-				LDRB R6, [R0, R8]					
-				STRB R6, [R0, R7]
-				STRB R5, [R0, R8]
-				ADD R3, R3, #1						; i++
-				CMP R3, R4
-				BLE CHANGE_LOOP						; i > c?
-				POP {R4, R5, R6, R7, R8}
+				; R0 - char *str, R1 - i, R2 - j, R3 - str[i], R4 - str[j]
+change_chars	PUSH {R4}
+CHANGE_LOOP		CMP R2, R1
+				BLE CHANGE_END						; j > i
+				LDRB R3, [R0, R1]					
+				LDRB R4, [R0, R2]					
+				STRB R3, [R0, R2]
+				STRB R4, [R0, R1]
+				ADD R1, R1, #1						; i++
+				SUB R2, R2, #1						; j--
+				B CHANGE_LOOP
+CHANGE_END		POP {R4}
 				BX    lr
 				END
 

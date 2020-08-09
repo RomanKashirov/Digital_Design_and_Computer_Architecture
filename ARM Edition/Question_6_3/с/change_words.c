@@ -24,15 +24,15 @@ int seek_symb(char* str, char symb, int i)
 	return i-1;
 }
 
-void change_chars(char* str, int start, int end)
+void change_chars(char* str, int i, int j)
 {
-	int c = (end-start)>>1;
-	
-	for(int i = 0; i <= c; i++)
+	char temp;
+	while (j > i)
 	{
-		char t;
-		t = str[start+i];
-		str[start+i] = str[end-i];
-		str[end-i] = t;
+		temp = str[i];
+		str[i] = str[j];
+		str[j] = temp;
+		i++;
+		j--;		
 	}
 }
