@@ -12,9 +12,11 @@ output logic [3:0] ALUFlags,
 output logic [31:0] PC,
 input logic [31:0] Instr,
 output logic [31:0] ALUResult, WriteData,
-input logic [31:0] ReadData);
-logic [31:0] PCNext, PCPlus4, PCPlus8;
-logic [31:0] ExtImm, SrcA, SrcB, Result;
+input logic [31:0] ReadData,
+output logic [31:0] SrcA); // отладка
+
+logic [31:0] PCNext, PCPlus4, SrcB, PCPlus8;
+logic [31:0] ExtImm, Result;
 logic [3:0] RA1, RA2;
 // next PC logic
 mux2 #(32) pcmux(PCPlus4, Result, PCSrc, PCNext);

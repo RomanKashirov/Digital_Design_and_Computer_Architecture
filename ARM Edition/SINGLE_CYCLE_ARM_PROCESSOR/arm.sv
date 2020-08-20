@@ -5,7 +5,8 @@ module arm(input  logic        clk, reset,
            input  logic [31:0] Instr,
            output logic        MemWrite,
            output logic [31:0] ALUResult, WriteData,
-           input  logic [31:0] ReadData);
+           input  logic [31:0] ReadData,
+			  output logic [31:0] SrcA); // test
 logic [3:0] ALUFlags;
 logic       RegWrite,
             ALUSrc, MemtoReg, PCSrc;
@@ -19,5 +20,6 @@ datapath dp(clk, reset,
             ALUSrc, ALUControl,
             MemtoReg, PCSrc,
             ALUFlags, PC, Instr,
-            ALUResult, WriteData, ReadData);
+            ALUResult, WriteData, ReadData,
+				SrcA); // test
 endmodule
