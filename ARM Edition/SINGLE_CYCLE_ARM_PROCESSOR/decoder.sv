@@ -5,7 +5,7 @@ module decoder(input logic  [1:0] Op,
                input logic  [3:0] Rd,
                output logic [1:0] FlagW,
                output logic       PCS, RegW, MemW,
-               output logic       MemtoReg, ALUSrc,
+               output logic       MemtoReg, ALUSrc, NoWrite,
                output logic [1:0] ImmSrc, RegSrc,
                                   ALUControl);
   logic [9:0]  controls;
@@ -36,6 +36,7 @@ module decoder(input logic  [1:0] Op,
          4'b0010: ALUControl = 2'b01; // SUB
          4'b0000: ALUControl = 2'b10; // AND
          4'b1100: ALUControl = 2'b11; // ORR
+			4'b1010: ALUControl = 2'b01; // CMP
          default: ALUControl = 2'bx; // не реализовано
      endcase
      // обновить флаги, если bit S поднят
@@ -49,4 +50,6 @@ module decoder(input logic  [1:0] Op,
   end
   // Логика работы с PC
   assign PCS = ((Rd == 4'b1111) & RegW) | Branch;
+  // NoWrite
+  assign NoWrite = (Funct[4:1] == 4'b1010); // CMP
 endmodule
