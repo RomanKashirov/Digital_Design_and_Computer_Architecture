@@ -23,7 +23,7 @@ end
 always @(negedge clk)
 begin
 if(MemWrite) begin
-if(DataAdr === 100 & WriteData === 10) begin
+if(DataAdr === 100 & WriteData === 4096) begin
 $display("Simulation succeeded");
 $stop;
 end else if (DataAdr !== 96) begin

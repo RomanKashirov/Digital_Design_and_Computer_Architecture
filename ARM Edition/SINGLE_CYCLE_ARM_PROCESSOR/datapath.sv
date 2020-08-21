@@ -16,7 +16,7 @@ input logic [31:0] ReadData,
 output logic [31:0] SrcA); // отладка
 
 logic [31:0] PCNext, PCPlus4, SrcB, PCPlus8;
-logic [31:0] ExtImm, Result;
+logic [31:0] ExtImm, Result, ShiftedDataB;
 logic [3:0] RA1, RA2;
 // next PC logic
 mux2 #(32) pcmux(PCPlus4, Result, PCSrc, PCNext);
@@ -29,9 +29,12 @@ mux2 #(4) ra2mux(Instr[3:0], Instr[15:12], RegSrc[1], RA2);
 regfile rf(clk, RegWrite, RA1, RA2,
 Instr[15:12], Result, PCPlus8,
 SrcA, WriteData);
+
+shifter shft(WriteData, Instr[11:7], Instr[6:5], ShiftedDataB);
+
 mux2 #(32) resmux(ALUResult, ReadData, MemtoReg, Result);
 extend ext(Instr[23:0], ImmSrc, ExtImm);
 // ALU logic
-mux2 #(32) srcbmux(WriteData, ExtImm, ALUSrc, SrcB);
+mux2 #(32) srcbmux(ShiftedDataB, ExtImm, ALUSrc, SrcB);
 alu alu(SrcA, SrcB, ALUControl, ALUResult, ALUFlags);
 endmodule

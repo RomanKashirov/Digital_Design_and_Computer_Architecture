@@ -24,5 +24,14 @@ AROUND  SUBS R8, R7, R2 	;   30 		R8 = 3 - 5 = -2, set Flags  1110 000 0010 1 01
 END 	CMP R5, R7			;   58		11 - 7 = 4, set Flags														E1550007
 		SUBLT R2, R2, #1	;	5C		shouldn't happen															B2422001	
 		ADDGE R2, R2, #3	;	60		R2 = 7 + 3 = 10																A2822003
-		STRGT R2,[R0,#100]  ;	64		mem[100] = 7																C5802064  
-;STR R2, [R0, #100]  ;   58 		mem[100] = 7                1110 010 1100 0 0000 0010 0000 0101 0100  		E5802064
+		SUB R2, R2, R3, LSR #2 ; 64		R2 = 10 - (12 >> 2) = 7														E0422123
+		ADD R2, R0, R2, LSL #1 ; 68		R2 = R2 << 1 = 14															E0802082
+		SUB R7, R0, #20		   ; 6C		R7 = -20																	E2407014
+		ADD R2, R2, R7, ASR #1 ; 70		R2 = 14 + (-20 ASR 1) = 4													E08220C7
+		ADD R2, R0, R2, ROR #22 ; 74	R2 = R2 >>> 22 = 4096														E0802B62
+		STRGT R2,[R0,#100]  ;	78		mem[100] = 7																C5802064  
+
+
+
+
+

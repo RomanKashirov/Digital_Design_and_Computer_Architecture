@@ -80,7 +80,22 @@ assign y = s ? d1 : d0;
 endmodule
 
 
+// SHIFTER
 
+module shifter (input logic [31:0] a,
+					input logic [4:0] s,
+					input logic [1:0] t,
+					output logic [31:0] y);
+					
+	always_comb
+	case(t)
+		2'b00: y = a << s; 												// Logical Shift Left 
+		2'b01: y = a >> s; 												// Logical Shift Right
+		2'b10: y = (a >> s) | (32'hFFFFFFFF << (32 - s));		// Arithmetic Shift Right 
+		2'b11: y = (a >> s) | (a << (32 - s)); 					// Rotate Right
+	default: y = 32'bx; 
+	endcase
+endmodule
 
 
 
