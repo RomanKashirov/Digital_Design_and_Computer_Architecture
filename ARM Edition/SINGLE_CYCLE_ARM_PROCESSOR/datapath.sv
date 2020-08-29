@@ -13,10 +13,11 @@ output logic [31:0] PC,
 input logic [31:0] Instr,
 output logic [31:0] ALUResult, WriteData,
 input logic [31:0] ReadData,
+input logic ShftCtrl,
 output logic [31:0] SrcA); // отладка
 
 logic [31:0] PCNext, PCPlus4, SrcB, PCPlus8;
-logic [31:0] ExtImm, Result, ShiftedDataB;
+logic [31:0] ExtImm, Result, ShiftedDataB, ALUout;
 logic [3:0] RA1, RA2;
 // next PC logic
 mux2 #(32) pcmux(PCPlus4, Result, PCSrc, PCNext);
@@ -32,9 +33,11 @@ SrcA, WriteData);
 
 shifter shft(WriteData, Instr[11:7], Instr[6:5], ShiftedDataB);
 
+mux2 #(32) shmux( ALUout, SrcB, ShftCtrl, ALUResult);
+
 mux2 #(32) resmux(ALUResult, ReadData, MemtoReg, Result);
 extend ext(Instr[23:0], ImmSrc, ExtImm);
 // ALU logic
 mux2 #(32) srcbmux(ShiftedDataB, ExtImm, ALUSrc, SrcB);
-alu alu(SrcA, SrcB, ALUControl, ALUResult, ALUFlags);
+alu alu(SrcA, SrcB, ALUControl, ALUout, ALUFlags);
 endmodule

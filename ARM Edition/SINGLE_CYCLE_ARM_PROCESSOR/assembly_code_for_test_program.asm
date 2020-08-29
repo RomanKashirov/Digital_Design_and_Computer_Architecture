@@ -29,9 +29,19 @@ END 	CMP R5, R7			;   58		11 - 7 = 4, set Flags														E1550007
 		SUB R7, R0, #20		   ; 6C		R7 = -20																	E2407014
 		ADD R2, R2, R7, ASR #1 ; 70		R2 = 14 + (-20 ASR 1) = 4													E08220C7
 		ADD R2, R0, R2, ROR #22 ; 74	R2 = R2 >>> 22 = 4096														E0802B62
-		STRGT R2,[R0,#100]  ;	78		mem[100] = 7																C5802064  
-
-
-
+		TST R2, R7				; 78	Z = 0, N = 0																E1120007
+		ADDNE R2, R2, #1		; 8c	R2 = R2 + 1 = 4097															12822001
+		TST R2, R3				; 90	Z = 1, N = 0																E1120003
+		ADDNE R2, R2, #3		; 94	shouldn't happen															12822003
+		ADDEQ R2, R2, #2		; 98	R2 = R2 + 2 = 4099															02822002
+		SUBMI R2, R2, #10		; 9c	shouldn't happen															4242200A
+		TST R8, R7				; 100	Z = 0, N = 1																E1180007
+		SUBMI R2, R2, #40		; 104	R2 = R2 - 40 = 4059															42422028
+		LSL R2, R2, #1			; 108	R2 = R2 << 1 = 8118															E1A02082
+		ADD R2, R2, #10			; 10c	R2 = R2 + 10 = 8128															E282200A
+		LSR R2, R2, #6			; 110 	R2 = R2 >> 6 = 127															E1A02322
+		STR R2,[R0,#100]  		; 110		mem[100] = 7															E5802064 
+		
+		
 
 
