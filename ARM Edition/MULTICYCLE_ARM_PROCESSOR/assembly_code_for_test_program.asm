@@ -21,7 +21,11 @@ AROUND  SUBS R8, R7, R2 	;   30 		R8 = 3 - 5 = -2, set Flags  1110 000 0010 1 01
 		B END 				; 	4C 		always taken 				1110 1010 0000  0000 0000 0000 0000 0001 		EA000001
 		ADD R2, R0, #13     ; 	50 		shouldn't happen 			1110 001 0100 0 0000 0010 0000 0000 0001  		E280200D
 		ADD R2, R0, #10     ; 	54 		shouldn't happen 			1110 001 0100 0 0000 0010 0000 0000 0001  		E280200A
-END 	STR R2,[R0,#100]  		; 110		mem[100] = 7															E5802064 
+		ROR R2, R2, #31		;																						E1A02FE2
+END 	STR R2,[R0,#100]  		; 110		mem[100] = 14															E5802064 
+
+
+
 		
 		
 

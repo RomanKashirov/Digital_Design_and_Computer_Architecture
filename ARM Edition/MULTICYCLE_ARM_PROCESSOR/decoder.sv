@@ -9,7 +9,8 @@ module decoder(input logic clk, reset,
                output logic       IRWrite, AdrSrc, 
                output logic [1:0] ResultSrc,
 					output logic ALUSrcA,
-					output logic [1:0] ALUSrcB, ImmSrc, RegSrc, ALUControl);
+					output logic [1:0] ALUSrcB, ImmSrc, RegSrc, ALUControl,
+					output logic Shift);
 					
 	logic [11:0]  controls;
 	logic        Branch, ALUOp;
@@ -89,8 +90,10 @@ module decoder(input logic clk, reset,
          4'b0010: ALUControl = 2'b01; // SUB
          4'b0000: ALUControl = 2'b10; // AND
          4'b1100: ALUControl = 2'b11; // ORR
+			4'b1101: ALUControl = 2'bx;	// ROR
 			default: ALUControl = 2'bx; // не реализовано
      endcase
+	  
      // обновить флаги, если bit S поднят
      // (C & V только для арифм. операций)
      FlagW[1] = Funct[0];
@@ -100,7 +103,7 @@ module decoder(input logic clk, reset,
      ALUControl = 2'b00; // для не ОД-команд
      FlagW = 2'b00;      // не обновлять флаги
   end				
-			
+	assign Shift = (Funct[4:1] == 4'b1101);
 endmodule	
 					
   
