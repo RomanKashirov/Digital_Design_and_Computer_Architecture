@@ -11,17 +11,18 @@ module datapath (input logic clk, reset,
 						output logic [31:0] Adr, WriteData, 
 						input logic [31:0] ReadData,
 						output logic [3:0] ALUFlags,
-						input logic [1:0] ResultSrc)
+						input logic [1:0] ResultSrc,
+						output logic [31:0] ALUResult); // test
 	
-	logic [31:0] PCnext, PC, Result;
+	logic [31:0] PC, Result;
 	logic [31:0] Data;
 	logic [3:0] RA1, RA2;
 	logic [31:0] RD1, RD2, A, ExtImm;
-	logic [31:0] SrcA, SrcB, ALUResult, ALUOut;
+	logic [31:0] SrcA, SrcB, ALUOut;
 	
 						
 	// next PC logic
-	flopenr #(32)   pcreg(clk, reset, PCWrite, PCnext, PC);
+	flopenr #(32)   pcreg(clk, reset, PCWrite, Result, PC);
 	mux2 #(32)    adrmux(PC, Result, AdrSrc, Adr);
 	
 	
